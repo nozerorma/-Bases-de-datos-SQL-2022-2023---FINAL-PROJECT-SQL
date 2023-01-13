@@ -27,7 +27,7 @@ Concretamente, sobre las bases de datos generadas al cargar una release en concr
 El objetivo es lanzar dos tandas de los programas, para generar dos bases de datos diferentes, una de datos de junio de 2022 y otra de diciembre de 2022. Esas bases de datos son necesarias para contestar a las preguntas de la segunda parte.
 
 ### Segunda parte **(4 puntos)**
-La segunda parte consistirá en escribir y realizar las siguientes 10 (0.4 puntos cada una) consultas SQL sobre el conjunto de tablas generado del script *clinvar_parser.py* más los programas que hayáis escrito. Las respuestas deben estar derivadas tanto de los datos de diciembre de 2022 como de junio de 2022, con lo que deberéis trabajar con bases de datos diferentes para esos meses.
+La segunda parte consistirá en escribir y realizar las siguientes 10 **(0.4 puntos cada una)** consultas SQL sobre el conjunto de tablas generado del script *clinvar_parser.py* más los programas que hayáis escrito. Las respuestas deben estar derivadas tanto de los datos de diciembre de 2022 como de junio de 2022, con lo que deberéis trabajar con bases de datos diferentes para esos meses.
 >* 1. ¿Cuántas variantes están relacionadas con el gen P53 tomando como referencia el ensamblaje GRCh38 en ClinVar y en CIViC?
 >* 2. ¿Qué cambio del tipo “single nucleotide variant” es más frecuente, el de una Guanina por una Adenina, o el una Guanina por una Timina? Usad las anotaciones basadas en el ensamblaje GRCh37 para cuantificar y proporcionar los números totales, tanto para ClinVar como para CIViC.
 >* 3. ¿Cuáles son los tres genes de ClinVar con un mayor número de inserciones y deleciones? Usa el ensamblaje GRCh37 para cuantificar y proporcionar los números totales.
