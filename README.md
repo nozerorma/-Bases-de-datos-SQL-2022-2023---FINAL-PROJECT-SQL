@@ -3,9 +3,8 @@ Final project for the SQL Module at Master en Bioinformatica ISCIII
 ## Author information
 Miguel Ramón Alonso
 
-## Pending format
-
 ## Enunciado del trabajo práctico para “Bases de datos SQL” 2022-2023
+
 ### Introducción
 Al final de las clases mostramos brevemente cómo se podía llegar a cargar en una base de datos SQLite, mediante un script de Python, datos de la base de datos ClinVar y CIViC. Los siguientes enlaces contienen una explicación de dónde se obtuvieron los datos, por qué se tomaron varias decisiones y dónde está el script como tal:
 > * </l>https://bbddmasterisciii.github.io/04-Clinvar/index.html</l>
