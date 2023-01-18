@@ -18,7 +18,7 @@ Tendréis de plazo para entregar el trabajo hasta el 12 de Marzo de 2023 (inclus
 La primera consistirá en crear tres programas, dos de ellos relacionados con
 clinvar_parser.py *(un punto cada uno)*, y un tercero que cargue datos de variantes de CIViC **(dos puntos)**. Por tanto el programa original debería ser tomado como ejemplo e inspiración:
 
->* A). Un programa que se encargue de cargar información de ClinVar de los artículos
+>* A) Un programa que se encargue de cargar información de ClinVar de los artículos
 científicos relacionados con las variantes **(0.75 puntos)**.
 >* B) Un programa que se encargue de cargar información de ClinVar de las estadísticas de variantes por gen **(0.75 puntos)**.
 >* C) Un programa que se encargue de cargar información de variantes de CIViC, similar a la información que se carga de ClinVar con *clinvar_parser.py* **(2.5 puntos)**.
