@@ -144,7 +144,7 @@ def open_clinvar_db(db_file):
     # Se crea un cursor para poder ejecutar comandos SQL en la base de datos. 
 	cur = db.cursor()
 	
-    # En Python, la estructura "try-except" se utiliza para controlar errores o excepciones que pueden ocurrir
+    	# En Python, la estructura "try-except" se utiliza para controlar errores o excepciones que pueden ocurrir
 	# en un bloque de código. El bloque "try" contiene el código que se desea ejecutar y el o los bloques "except" 
 	# contienen el código que se ejecutará en caso de que ocurra una excepción específica. Y finalmente, se puede 
 	# utilizar un bloque "finally" para ejecutar código independientemente de si ocurre o no una excepción
@@ -153,18 +153,18 @@ def open_clinvar_db(db_file):
 		# de datos con el comando "PRAGMA FOREIGN_KEYS=ON".
 		cur.execute("PRAGMA FOREIGN_KEYS=ON")
 		
-        # Luego, se utiliza un ciclo "for" para recorrer una lista de definiciones de tablas llamada "CLINVAR_TABLE_DEFS" 
+       	 	# Luego, se utiliza un ciclo "for" para recorrer una lista de definiciones de tablas llamada "CLINVAR_TABLE_DEFS" 
 		# y crear cada una de estas tablas en la base de datos si aún no existen.
 		for tableDecl in CLINVAR_TABLE_DEFS:
 			cur.execute(tableDecl)
 	
-    # Este código imprime un mensaje de error en la consola, indicando que un error ha ocurrido al ejecutar el código anterior. 
+    	# Este código imprime un mensaje de error en la consola, indicando que un error ha ocurrido al ejecutar el código anterior. 
 	# El mensaje de error incluye información sobre el error específico que se ha producido, y se imprime en la consola 
 	# de error (sys.stderr) en lugar de la consola estándar (sys.stdout).
 	except sqlite3.Error as e:
 		print("An error occurred: {}".format(str(e)), file=sys.stderr)
 	
-    # Finalmente, se cierra el cursor y se devuelve la conexión a la base de datos.
+    	# Finalmente, se cierra el cursor y se devuelve la conexión a la base de datos.
 	finally:
 		cur.close()
 	
@@ -177,38 +177,39 @@ def open_clinvar_db(db_file):
 # archivo de ClinVar disponibles en la base de datos para su uso posterior.
 def store_clinvar_file(db,clinvar_file):
 	
-    # "with gzip.open(clinvar_file, "rt",encoding="utf-8") as cf:" se utiliza para abrir el archivo clinvar_file,
+    	# "with gzip.open(clinvar_file, "rt",encoding="utf-8") as cf:" se utiliza para abrir el archivo clinvar_file,
 	# comprimido con gzip, en modo lectura y texto, y con la codificación utf-8 especificada. El fichero se abre y 
 	# se asigna a la variable "cf" y se cerrará automáticamente cuando el bloque de código termine de ejecutarse.
 	with gzip.open(clinvar_file,"rt",encoding="utf-8") as cf:
 		
-        # La variable "headerMapping" se utiliza para almacenar la correspondencia entre el nombre de columna 
+        	# La variable "headerMapping" se utiliza para almacenar la correspondencia entre el nombre de columna 
 		# y el id de columna en el encabezado del archivo.
 		headerMapping = None
 		
-        # "known_genes" es un conjunto que se utiliza para almacenar una lista de genes conocidos.
+        	# "known_genes" es un conjunto que se utiliza para almacenar una lista de genes conocidos.
 		known_genes = set()
 		
-        # "newVCFCoords" es una variable utilizada para indicar si las coordenadas VCF del fichero son nuevas o no.
+        	# "newVCFCoords" es una variable utilizada para indicar si las coordenadas VCF del fichero son nuevas o no.
 		newVCFCoords = False
 		
-        # La línea cur = db.cursor() se utiliza para crear un cursor de base de datos, lo cual es necesario para 
+        	# La línea cur = db.cursor() se utiliza para crear un cursor de base de datos, lo cual es necesario para 
 		# realizar operaciones en la base de datos, como ejecutar consultas y obtener resultados.
 		cur = db.cursor()
 		
-        # La sentencia with db: se utiliza para establecer un contexto de trabajo con la base de datos, de forma 
+        	# La sentencia with db: se utiliza para establecer un contexto de trabajo con la base de datos, de forma 
 		# que al finalizar el bloque de código dentro de él, las operaciones realizadas en la base de datos se 
 		# confirmen automáticamente (commit) si no se produjo ninguna excepción.
 		with db:
 			
-            # La línea for line in cf: es un bucle que itera sobre cada línea del archivo especificado en la 
+            		# La línea for line in cf: es un bucle que itera sobre cada línea del archivo especificado en la 
 			# variable cf, que en este caso es un archivo ClinVar.
 			for line in cf:
 				
-                # La línea wline = line.rstrip("\n") se utiliza para eliminar el carácter de nueva línea al final de cada línea del archivo.
+                		# La línea wline = line.rstrip("\n") se utiliza para eliminar el carácter de nueva línea 
+				# al final de cada línea del archivo.
 				wline = line.rstrip("\n")
 				
-                # La condición if (headerMapping is None) and (wline[0] == '#'): se utiliza 
+                		# La condición if (headerMapping is None) and (wline[0] == '#'): se utiliza 
 				# para detectar si la línea actual es el encabezado del archivo. Si se cumple, 
 				# se elimina el carácter "#" al inicio de la línea y se separan los nombres de 
 				# columna utilizando la expresión regular re.split(r"\t",wline).
@@ -216,22 +217,22 @@ def store_clinvar_file(db,clinvar_file):
 					wline = wline.lstrip("#")
 					columnNames = re.split(r"\t",wline)
 					
-                    # En caso afirmativo, crea una variable headerMapping que es un diccionario 
+                    			# En caso afirmativo, crea una variable headerMapping que es un diccionario 
 					# que asigna el nombre de la columna a su id de columna. 
 					headerMapping = {}
 					
-                    # A continuación, recorre los nombres de columna y los añade al diccionario 
+                    			# A continuación, recorre los nombres de columna y los añade al diccionario 
 					# headerMapping como claves y sus respectivos id de columna como valores.
 					for columnId, columnName in enumerate(columnNames):
 						headerMapping[columnName] = columnId
 					
-                    # Por último, comprueba si la columna "PositionVCF" está en el diccionario 
+                    			# Por último, comprueba si la columna "PositionVCF" está en el diccionario 
 					# headerMapping y establece la variable newVCFCoords en consecuencia. Esto 
 					# se hace probablemente para comprobar si el archivo tiene una columna 
 					# específica llamada 'PositionVCF' que puede ser utilizada más adelante en el código.
 					newVCFCoords = 'PositionVCF' in headerMapping
 					
-                    # Este código se está utilizando para leer un archivo de ClinVar en formato VCF y 
+                    			# Este código se está utilizando para leer un archivo de ClinVar en formato VCF y 
 					# cargarlo en una base de datos. La variable "newVCFCoords" se utiliza para determinar 
 					# si el archivo contiene coordenadas VCF o no. Si el archivo contiene coordenadas VCF, 
 					# las columnas "ReferenceAlleleVCF" y "AlternateAlleleVCF" se utilizarán para almacenar 
@@ -245,7 +246,7 @@ def store_clinvar_file(db,clinvar_file):
 						refAlleleCol = headerMapping["ReferenceAllele"]
 						altAlleleCol = headerMapping["AlternateAllele"]
 						
-                # La función "re.split()" es utilizada para dividir la cadena de texto en varias partes 
+                		# La función "re.split()" es utilizada para dividir la cadena de texto en varias partes 
 				# utilizando un patrón de expresión regular, en este caso, el caracter de tabulación. El
 				# resultado es una lista de valores que se almacenan en la variable "columnValues".
 				else:
@@ -263,7 +264,7 @@ def store_clinvar_file(db,clinvar_file):
 						if len(vCol) == 0 or vCol == "-":
 							columnValues[iCol] = None
 					
-                    # Este código está creando variables para cada columna del fichero utilizando el diccionario
+                    			# Este código está creando variables para cada columna del fichero utilizando el diccionario
 					# 'headerMapping' para acceder al índice de cada columna del fichero. Los valores de la columna
 					# se asignan a la variable correspondiente. Por ejemplo, el valor de la columna "AlleleID"
 					# se asigna a la variable "allele_id", y el valor de la columna "Name" se asigna a la variable
@@ -302,7 +303,7 @@ def store_clinvar_file(db,clinvar_file):
 					
 					HGNC_ID = columnValues[headerMapping["HGNC_ID"]]
 					
-                    # Este código inserta los valores almacenados en las variables allele_id, name, allele_type,
+                    			# Este código inserta los valores almacenados en las variables allele_id, name, allele_type,
 					# dbSNP_id, phenotype_list, gene_id, gene_symbol, HGNC_ID, assembly, chro, chro_start, chro_stop,
 					# ref_allele, alt_allele, cytogenetic, y variation_id en la tabla "variant" de una base de datos
 					# SQLite. La función "cur.execute" se utiliza para ejecutar una sentencia SQL. La sentencia
@@ -332,21 +333,21 @@ def store_clinvar_file(db,clinvar_file):
 					""", (allele_id,name,allele_type,dbSNP_id,phenotype_list,gene_id,gene_symbol,HGNC_ID,assembly,chro,chro_start,chro_stop,ref_allele,alt_allele,cytogenetic,variation_id))
 #### buscar manera de acotar la linea superior
 
-                    # A la variable ventry_id se le asigna el valor del último identificador de fila
+                    			# A la variable ventry_id se le asigna el valor del último identificador de fila
 					# generado por el atributo lastrowid del objeto cursor. Este valor suele ser el
 					# identificador único asignado a la fila creada por la sentencia INSERT más reciente
 					# ejecutada por el cursor. En este caso, es el identificador único de la entrada
 					# de variante que se acaba de añadir a la base de datos.
 					ventry_id = cur.lastrowid
 					
-					# Clinical significance
-                    # Esta línea está obteniendo el valor de la columna "ClinicalSignificance" de la lista
+					### Clinical significance
+                    			# Esta línea está obteniendo el valor de la columna "ClinicalSignificance" de la lista
 					# "columnValues" utilizando el diccionario "headerMapping", donde las claves son los
 					# nombres de las columnas y los valores son el índice correspondiente en la lista "columnValues".
 					# El valor obtenido se almacena en la variable "significance".
 					significance = columnValues[headerMapping["ClinicalSignificance"]]
 					
-                    # Este código comprueba si la variable "significance" no es None. Si no es None,
+                    			# Este código comprueba si la variable "significance" no es None. Si no es None,
 					# divide el valor de "significance" utilizando el carácter "/" como delimitador 
 					# mediante la función re.split(). Esto crea una lista de subcadenas que se combinan
 					# con la variable "ventry_id" para crear una nueva lista de tuplas, donde cada
@@ -366,8 +367,8 @@ def store_clinvar_file(db,clinvar_file):
 							VALUES(?,?)
 						""", prep_sig)
 					
-					# Review status
-                    # La variable "status_str" se establece en el valor de la columna "ReviewStatus" de la fila
+					### Review status
+                    			# La variable "status_str" se establece en el valor de la columna "ReviewStatus" de la fila
 					# de datos actual que se está procesando. Este valor se recupera buscando el índice de la columna
 					# "ReviewStatus" en el diccionario headerMapping. El diccionario headerMapping se utiliza para
 					# asignar los nombres de las columnas del archivo a su índice correspondiente, de forma que se
@@ -389,8 +390,8 @@ def store_clinvar_file(db,clinvar_file):
 							VALUES(?,?)
 						""", prep_status)
 					
-					# Variant Phenotypes
-                    # Si la variable "variant_pheno_str" contiene un valor, es probable que se esté utilizando
+					### Variant Phenotypes
+                    			# Si la variable "variant_pheno_str" contiene un valor, es probable que se esté utilizando
 					# para almacenar una cadena de IDs de fenotipos que están asociados con la variante. La cadena
 					# puede contener varios ID separados por un delimitador como una coma o una barra oblicua. 
 					# El siguiente paso en el código puede ser dividir esta cadena en una lista de ID individuales
@@ -401,7 +402,7 @@ def store_clinvar_file(db,clinvar_file):
 					# al fenotipo o fenotipos específicos a los que está asociada.
 					variant_pheno_str = columnValues[headerMapping["PhenotypeIDS"]]
 					
-                    # Este código se refiere a la manipulación de una cadena de texto que contiene información sobre
+                    			# Este código se refiere a la manipulación de una cadena de texto que contiene información sobre
 					# los fenotipos asociados a una variante genética. La primera línea comprueba si la variable 
 					# "variant_pheno_str" contiene algún valor, si es así, se procede a la siguiente línea.
 					if variant_pheno_str is not None:
@@ -410,11 +411,11 @@ def store_clinvar_file(db,clinvar_file):
 						# La lista resultante se almacena en la variable "variant_pheno_list".
 						variant_pheno_list = re.split(r"[;|]",variant_pheno_str)
 						
-                        # La tercera línea crea una lista vacía llamada "prep_pheno" que se utilizará en una línea
+                        			# La tercera línea crea una lista vacía llamada "prep_pheno" que se utilizará en una línea
 						#  posterior del código para almacenar información relacionada con los fenotipos.
 						prep_pheno = []
 						
-                        # Este código está iterando sobre una lista de identificadores de fenotipos (variant_pheno_list)
+                        			# Este código está iterando sobre una lista de identificadores de fenotipos (variant_pheno_list)
 						# que se han extraído de una cadena de texto (variant_pheno_str) utilizando una expresión regular.
 						# En cada iteración, se verifica si la longitud de la cadena de texto actual (variant_pheno) es
 						# igual a 0. Si es así, se salta la iteración actual usando "continue" y se pasa a la siguiente
@@ -423,7 +424,7 @@ def store_clinvar_file(db,clinvar_file):
 							if len(variant_pheno) == 0:
 								continue
 							
-                            # Este código es una comprobación para verificar si la cadena "variant_pheno" cumple con
+                            				# Este código es una comprobación para verificar si la cadena "variant_pheno" cumple con
 							# cierta expresión regular. La expresión regular "^[1-9][0-9]* conditions$" busca una cadena 
 							# que comience con uno o más dígitos seguidos de " conditions". Si la cadena "variant_pheno" 
 							# cumple con esta expresión regular, se imprime un mensaje de información 
@@ -433,34 +434,34 @@ def store_clinvar_file(db,clinvar_file):
 								print("INFO: Long PhenotypeIDs {} {}: {}".format(allele_id, assembly, variant_pheno))
 								continue
 							
-                            # Este código está dividiendo la cadena almacenada en la variable "variant_pheno" 
+                            				# Este código está dividiendo la cadena almacenada en la variable "variant_pheno" 
 							# utilizando una expresión regular que coincide con una coma (,). La lista de cadenas 
 							# resultante se almacena en la variable "variant_annots". Esto sugiere que el código
 							# probablemente está intentando extraer múltiples valores de la cadena "variant_pheno" 
 							# que están separados por comas y almacenarlos en una lista para su posterior procesamiento.
 							variant_annots = re.split(r",",variant_pheno)
 							
-                            # Este código está iterando sobre una lista de anotaciones de fenotipo llamada "variant_annots", 
+                            				# Este código está iterando sobre una lista de anotaciones de fenotipo llamada "variant_annots", 
 							# que se obtiene a partir de una cadena de texto anteriormente dividida por comas.
 							for variant_annot in variant_annots:
 								
-                                # Para cada anotación de fenotipo en la lista, el código está dividiendo la anotación
+                                				# Para cada anotación de fenotipo en la lista, el código está dividiendo la anotación
 								# en dos partes utilizando el método "split" con el carácter ":". Esto es para separar
 								# el identificador del espacio de nombres (namespace) del identificador de fenotipo.
 								phen = variant_annot.split(":")
 								
-                                # Luego, si el tamaño de la lista "phen" es mayor a 1, significa que se han
+                                				# Luego, si el tamaño de la lista "phen" es mayor a 1, significa que se han
 								# encontrado dos partes (espacio de nombres y identificador de fenotipo), y 
 								# se asigna cada una a las variables "phen_ns" y "phen_id".
 								if len(phen) > 1:
 									phen_ns , phen_id = phen[0:2]
 									
-                                    # Finalmente, se agrega una nueva tupla a la lista "prep_pheno", con los
+                                    					# Finalmente, se agrega una nueva tupla a la lista "prep_pheno", con los
 									# valores de "ventry_id", "phen_group_id", "phen_ns" y "phen_id", estos 
 									# valores son utilizados para una posible inserción en una tabla de la base de datos.
 									prep_pheno.append((ventry_id,phen_group_id,phen_ns,phen_id))
 									
-                                # El código verifica si la variable "variant_annot" es diferente de "na". Si es así, 
+                                				# El código verifica si la variable "variant_annot" es diferente de "na". Si es así, 
 								# imprime un mensaje de depuración en la consola con información sobre el allele_id, 
 								# la assembly, el variant_annot, variant_pheno_str y la línea actual en el archivo 
 								# que se está procesando. El objetivo de este código es ayudar al desarrollador a 
@@ -468,7 +469,7 @@ def store_clinvar_file(db,clinvar_file):
 								elif variant_annot != "na":
 									print("DEBUG: {} {} {}\n\t{}\n\t{}".format(allele_id,assembly,variant_annot,variant_pheno_str,line),file=sys.stderr)
 						
-                        # Se está ejecutando una consulta SQL para insertar los valores en la tabla "variant_phenotypes"
+                        			# Se está ejecutando una consulta SQL para insertar los valores en la tabla "variant_phenotypes"
 						# utilizando la lista "prep_pheno" como argumento.
 						cur.executemany("""
 							INSERT INTO variant_phenotypes(
@@ -479,10 +480,10 @@ def store_clinvar_file(db,clinvar_file):
 							VALUES(?,?,?,?)
 						""", prep_pheno)
 
-    # Este código cierra el objeto cursor 'cur', que se utiliza para ejecutar comandos SQL 
-	# en la base de datos. Una vez que se cierra el cursor, ya no se puede utilizar para ejecutar
-	# más comandos. Esto se hace normalmente después de que se hayan ejecutado todos los comandos
-	# SQL necesarios y se haya actualizado la base de datos con los nuevos datos.	
+    		# Este código cierra el objeto cursor 'cur', que se utiliza para ejecutar comandos SQL 
+		# en la base de datos. Una vez que se cierra el cursor, ya no se puede utilizar para ejecutar
+		# más comandos. Esto se hace normalmente después de que se hayan ejecutado todos los comandos
+		# SQL necesarios y se haya actualizado la base de datos con los nuevos datos.	
 		cur.close()
 
 # Este código comprueba si el archivo actual se está ejecutando como un script principal (si su nombre es "main"). 
