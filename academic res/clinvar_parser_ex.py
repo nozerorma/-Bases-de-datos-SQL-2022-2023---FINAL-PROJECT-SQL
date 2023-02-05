@@ -214,6 +214,7 @@ def store_clinvar_file(db,clinvar_file):
 					""", (allele_id,name,allele_type,dbSNP_id,phenotype_list,gene_id,gene_symbol,HGNC_ID,assembly,chro,chro_start,chro_stop,ref_allele,alt_allele,cytogenetic,variation_id))
 					
 					# The autoincremented value is got here
+					### WTF is going on here
 					ventry_id = cur.lastrowid
 					
 					## Table gene
@@ -243,6 +244,7 @@ def store_clinvar_file(db,clinvar_file):
 						""", prep_sig)
 					
 					# Review status
+					### GOTTA REVISE WHAT THIS **executemany** does
 					status_str = columnValues[headerMapping["ReviewStatus"]]
 					if status_str is not None:
 						prep_status = [ (ventry_id, status)  for status in re.split(r", ",status_str) ]
