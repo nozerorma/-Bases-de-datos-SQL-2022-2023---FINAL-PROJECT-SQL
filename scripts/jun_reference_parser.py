@@ -1,7 +1,8 @@
 #!/usr/bin/env python3.8
 # -*- coding: utf-8 -*-
 
-import sys, os
+import sys
+import os
 
 import sqlite3
 
@@ -9,7 +10,7 @@ import sqlite3
 import re
 
 CLINVAR_REFERENCE_DEFS = [
-"""
+    """
 CREATE TABLE IF NOT EXISTS reference (
     ventry_id INTEGER PRIMARY KEY AUTOINCREMENT,
     allele_id INTEGER NOT NULL,
@@ -30,15 +31,16 @@ def open_clinvar_db(db_file):
         cur.execute("PRAGMA FOREIGN_KEYS=ON")
         for tableDecl in CLINVAR_REFERENCE_DEFS:
             cur.execute(tableDecl)
-	except sqlite3.Error as e:
-		print("An error occurred: {}".format(str(e)), file=sys.stderr)
-	finally:
-		cur.close()
-	
-	return db
+    except sqlite3.Error as e:
+        print("An error occurred: {}".format(str(e)), file=sys.stderr)
+    finally:
+            cur.close()
 
-def store_reference_file(db,reference_file):
+    return db
+
+
+def store_reference_file(db, reference_file):
     with reference_file as ref:
         headerMapping = None
-        #known_genes = set() #no use AON
+        # known_genes = set() #no use AON
         cur = db.cursor()
