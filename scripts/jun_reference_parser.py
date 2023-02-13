@@ -9,19 +9,20 @@ import sqlite3
 # For compressed input files
 import re
 
+# think about creating table inside def declaration
 CLINVAR_REFERENCE_DEFS = [
     """
 CREATE TABLE IF NOT EXISTS reference (
     ventry_id INTEGER PRIMARY KEY AUTOINCREMENT,
     allele_id INTEGER NOT NULL,
-    variation_id INTEGER NOT NULL,
-    rs INTEGER,
-    nsv VARCHAR(64),
     citation_source VARCHAR(64),
     citation_id VARCHAR(64)
 )
 """
 ]
+
+# EN PRIMERA INSTANCIA VOY A PSEUDOCOPIAR EL CODIGO DEL PROFE
+# CUANDO ENTIENDA QUE PASA, LO HAGO ORIGINAL
 
 
 def open_clinvar_db(db_file):
@@ -51,6 +52,7 @@ def store_reference_file(db, reference_file):
                 wline = line.rstrip("\n")
 
                 # Now, detecting the header
+                # no factual need for this, just looks good to take out the hash
                 if (headerMapping is None) and (wline[0] == '#'):
                     wline = wline.lstrip("#")
                     columnNames = re.split(r"\t", wline)
@@ -59,7 +61,7 @@ def store_reference_file(db, reference_file):
                     # And we are saving the correspondence of column name and id
                     for columnId, columnName in enumerate(columnNames):
                         headerMapping[columnName] = columnId
-                    
+
                 else:
                     # We are reading the file contents
                     columnValues = re.split(r"\t", wline)
@@ -73,19 +75,35 @@ def store_reference_file(db, reference_file):
                     # And extracting what we really need
                     # Table variation
                     # change for the required vals
+                    # ventry somewhere in here? note that for autoincrement, for_keys must be somewhere declared
                     allele_id = int(columnValues[headerMapping["AlleleID"]])
-                    name = columnValues[headerMapping["Name"]]
-                    allele_type = columnValues[headerMapping["Type"]]
-                    dbSNP_id = columnValues[headerMapping["RS# (dbSNP)"]]
-                    phenotype_list = columnValues[headerMapping["PhenotypeList"]]
-                    assembly = columnValues[headerMapping["Assembly"]]
-                    chro = columnValues[headerMapping["Chromosome"]]
-                    chro_start = columnValues[headerMapping["Start"]]
-                    chro_stop = columnValues[headerMapping["Stop"]]
-                    cytogenetic = columnValues[headerMapping["Cytogenetic"]]
-                    variation_id = int(
-                        columnValues[headerMapping["VariationID"]])
+                    citation_source = columnValues[headerMapping["citation_source"]]
+                    citation_id = columnValues[headerMapping["citation_id"]]
 
-                    gene_id = columnValues[headerMapping["GeneID"]]
-                    gene_symbol = columnValues[headerMapping["GeneSymbol"]]
-                    HGNC_ID = columnValues[headerMapping["HGNC_ID"]]
+                    cur.execute("""
+                        INSERT INTO reference(
+                            allele_id,
+                            citation_source,
+                            citation_id)
+                        VALUES(?,?,?)
+                    """, (allele_id, citation_source, citation_id))
+
+                    ventry_id = cur.lastrowid
+
+    def ref_curation(db, reference_file):
+    # now, here should go the curation definition
+        # for it to work, select from left
+        with open(reference_file, "rt") as ref:
+            cur = db.cursor()
+
+            with db:
+                try:
+                    cur.exectue("""
+                        SELECT *
+                        FROM variant v
+                        JOIN references r
+                        ON v.allele_id = r.allele_id;
+                    """)
+                    # marcos introduce SELECT MAX y LEFT JOIN, ver
+                    last_citation=cur.fetchall() #marcos
+                except:
