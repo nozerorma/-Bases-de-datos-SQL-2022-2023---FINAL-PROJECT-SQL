@@ -100,7 +100,7 @@ def citation_filtering(db, citations_file_path):
                 print("Processing posterior entries.")
 
                 cur.execute(
-                    f"""
+                    """
                     DELETE FROM citations
                     WHERE allele_id > {last_citation}
                     """
