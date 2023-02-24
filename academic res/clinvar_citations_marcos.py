@@ -81,9 +81,10 @@ def citation_filtering(db, citations_file_path):
         cur = db.cursor()
         with db:
             try:
+                # max in here gives as the last entry in allele_id
                 cur.execute(
                     """
-                    SELECT MAX(c.allele_id)
+                    SELECT MAX(c.allele_id) 
                     FROM variant v 
                     LEFT JOIN citations c
                     ON v.allele_id = c.allele_id

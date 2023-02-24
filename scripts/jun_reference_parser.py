@@ -84,7 +84,11 @@ def store_clinvar_ref(db, reference_file):
                             citation_source,
                             citation_id)
                         VALUES(?,?,?)
-                    """, (allele_id, citation_source, citation_id))
+                        """, (allele_id, citation_source, citation_id))
+                    cur.execute("""
+                        DELETE FROM reference
+                        WHERE citation_source NOT IN (SELECT DISTINCT citation_source FROM reference);
+                        """)
 
                     ventry_id = cur.lastrowid
 
@@ -115,18 +119,13 @@ if __name__ == '__main__':
 		print("Usage: {0} {{database_file}} {{compressed_clinvar_file}}".format(sys.argv[0]), file=sys.stderr)
 		sys.exit(1)
 
-	# La siguiente línea asigna el primer argumento pasado al script a la variable "db_file" 
-	# y el segundo argumento a la variable "clinvar_file".
 	db_file = sys.argv[1]
 	clinvar_file = sys.argv[2]
 
-	# Luego, se llama a la función "open_clinvar_db" pasándole la ruta del archivo de la base de datos. 
-	# Esta función abre la conexión con la base de datos y devuelve una conexión.
 	db = open_clinvar_db(db_file)
-
-	# La función "store_clinvar_file" se llama con los argumentos "db" y "clinvar_file". 
-	# Esta función almacena los datos del archivo "clinvar_file" en la base de datos.
 	store_clinvar_ref(db,clinvar_file)
-
-    # Finalmente, la conexión a la base de datos se cierra mediante el método "close()".
 	db.close()
+
+
+  # for dedup, try to use *SELECT DISTINCT*
+  # for sorting, try to use *SELECT table ORDER BY key (DESC); ordenación por dos columnas, doble key; ordena primero 1er query 2o query, podemos mezclar ASC y DESC*
