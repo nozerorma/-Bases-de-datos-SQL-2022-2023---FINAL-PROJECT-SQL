@@ -4,7 +4,11 @@
 
 ###### Organizado por el ISCIII en colaboración con el BSC y otras instituciones
 
-### Primera entrada: 18.35 20/01/2023
+### INTRODUCCIÓN
+
+El objetivo de este trabajo consistió en aprender a trabajar con bases de datos relacionales SQL, utilizando la libreria OSS SQLite. Para la creación y modificación de dichas bases de datos, se propuso utilizar diversos scripts escritos en Python, los cuales se encargarían de relacionar la información contenida en los diversos ficheros almacenados en los históricos de ClinVar y CIViC requeridos para la realización de la práctica. Específicamente, se requirió el procesado de la base de datos de variantes de ClinVar, en sus versiones congeladas de junio y diciembre de 2022, mediante el script *clinvar_parser.py*; a continuación, debíamos escribir dos scripts más, basados en éste, los cuales se encargaran de añadir a la BBDD creada por dicho script la información hallada en los ficheros de citaciones y de estadísticas específicas de cada gen.  Paralelamente, debíamos realizar un script similar al modelo utilizado en clase para el parseo de la base de datos de variantes contenida en CIViC. 
+
+#### Creación de
 
 **super preliminar**
 
