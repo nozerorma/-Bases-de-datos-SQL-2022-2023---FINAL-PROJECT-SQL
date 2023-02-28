@@ -5,7 +5,6 @@ import sys, os
 
 import sqlite3
 
-# For compressed input files
 import gzip
 
 import re
