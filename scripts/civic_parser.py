@@ -1,3 +1,14 @@
+# ------------------------------------------------------------------------------
+# civic_parser.py
+# Based on clinvar_parser.py, further info see https://bbddmasterisciii.github.io/files/clinvar_parser.py
+# Copyright © 2019–2023 Eduardo Andrés & José Mª Fernández
+# All rights reserved.
+#
+# This script is licensed under the terms of the Creative Commons Attribution license.
+# For a copy, see https://creativecommons.org/licenses/by/4.0/
+#
+# ------------------------------------------------------------------------------
+
 #!/usr/bin/env python3.8
 # -*- coding: utf-8 -*-
 
