@@ -22,8 +22,7 @@ CIVIC_TABLE_DEFS = [
 CREATE TABLE IF NOT EXISTS gene (
 	variant_id INTEGER PRIMARY KEY, 
 	gene_symbol VARCHAR(16) NOT NULL,
-	entrez_id INTEGER NOT NULL,
-	
+	entrez_id INTEGER NOT NULL
 )
 """
 ,
@@ -47,45 +46,46 @@ CREATE TABLE IF NOT EXISTS variant (
 	var_types VARCHAR(64) NULL,
 	ref_bases VARCHAR(32) NULL,
 	var_bases VARCHAR(32) NULL,
-	ensemble INTEGER NOT NULL,
-	ref_build VARCHAR(32) NOT NULL,
-	chr_1 INTEGER NULL,
+	ensemble INTEGER NULL,
+	ref_build VARCHAR(32) NULL,
+	chr_1 VARCHAR(8) NULL,
 	chr_start INTEGER NULL,
 	chr_stop INTEGER NULL,
 	representative_transcript VARCHAR(48) NULL,
-	chr_2 INTEGER NULL,
+	chr_2 VARCHAR(8) NULL,
 	chr_2_start INTEGER NULL,
 	chr_2_stop INTEGER NULL,
-	representative_transcript_2 VARCHAR(48) NULL
+	representative_transcript_2 VARCHAR(48) NULL,
 	allele_registry_id VARCHAR(64) NULL,
-	civic_evidence_score INTEGER NOT NULL,
-	civic_assertion_id INTEGER NULL,
+	civic_evidence_score FLOAT NULL,
+	civic_assertion_id VARCHAR(32) NULL,
 	civic_assertion_url VARCHAR(128) NULL,
 	civic_is_flagged VARCHAR(64) NULL,
-	clinvar_ids INTEGER NULL,
+	clinvar_ids VARCHAR(32) NULL,
 	var_alias VARCHAR(48) NULL
 )
 """
 ,
 """
-CREATE INDEX assembly_variant ON variant(ensemble, ref_build)
+CREATE INDEX IF NOT EXISTS assembly_variant ON variant(ensemble, ref_build)
 """
 ,
 """
-CREATE INDEX coords_variant ON variant(chr_start,chr_stop,chr_1,representative_transcript)
+CREATE INDEX IF NOT EXISTS coords_variant ON variant(chr_start,chr_stop,chr_1,representative_transcript)
 """
 ,
 """
-CREATE INDEX coords_2_variant ON variant(chro_2_start,chro_2_stop,chr_2,representative_transcript_2)
+CREATE INDEX IF NOT EXISTS coords_2_variant ON variant(chr_2_start,chr_2_stop,chr_2,representative_transcript_2)
 """
 ,
 """
-CREATE INDEX gene_symbol_variant ON variant(gene_symbol)
+CREATE INDEX IF NOT EXISTS gene_symbol_variant ON variant(gene_symbol)
 """
 ,
 """
 CREATE TABLE IF NOT EXISTS hgvs_expressions (
-	variant_id INTEGER PRIMARY KEY,
+	ventry_id INTEGER PRIMARY KEY AUTOINCREMENT,
+	variant_id INTEGER NULL,
 	hgvs_expression VARCHAR(64) NULL,
 	FOREIGN KEY (variant_id) REFERENCES gene(variant_id)
 		ON DELETE CASCADE ON UPDATE CASCADE,
@@ -93,15 +93,9 @@ CREATE TABLE IF NOT EXISTS hgvs_expressions (
 		ON DELETE CASCADE ON UPDATE CASCADE
 )
 """
-,
-"""
-CREATE TABLE IF NOT EXISTS review_status
-	variant_id INTEGER PRIMARY KEY,
-
-	"""
 ]
 
-def open_clinvar_db(db_file):
+def open_civic_db(db_file):
 	"""
 		This method creates a SQLITE3 database with the needed
 		tables to store civic data, or opens it if it already
@@ -135,8 +129,7 @@ def store_civic_file(db,civic_file):
 		with db:
 			for line in cf:
 				wline = line.rstrip("\n")
-				if (headerMapping is None) and (wline[0] == '#'):
-					wline = wline.lstrip("#")
+				if (headerMapping is None):
 					columnNames = re.split(r"\t",wline)
 					headerMapping = {}
 					for columnId, columnName in enumerate(columnNames):
@@ -150,133 +143,99 @@ def store_civic_file(db,civic_file):
 						if len(vCol) == 0 or vCol == "N/A":
 							columnValues[iCol] = None
 					
-					# And extracting what we really need
 					# Table variation
-					variant_id = int(columnValues[headerMapping["VariationID"]])
-					name = columnValues[headerMapping["Name"]]
-					allele_type = columnValues[headerMapping["Type"]]
-					dbSNP_id = columnValues[headerMapping["RS# (dbSNP)"]]
-					phenotype_list = columnValues[headerMapping["PhenotypeList"]]
-					assembly = columnValues[headerMapping["Assembly"]]
-					chro = columnValues[headerMapping["Chromosome"]]
-					chro_start = columnValues[headerMapping["Start"]]
-					chro_stop = columnValues[headerMapping["Stop"]]
-					ref_allele = columnValues[refAlleleCol]
-					alt_allele = columnValues[altAlleleCol]
-					cytogenetic = columnValues[headerMapping["Cytogenetic"]]
-					variation_id = int(columnValues[headerMapping["VariationID"]])
-					
-					gene_id = columnValues[headerMapping["GeneID"]]
-					gene_symbol = columnValues[headerMapping["GeneSymbol"]]
-					HGNC_ID = columnValues[headerMapping["HGNC_ID"]]
+					#import pdb; pdb.set_trace()
+					variant_id = int(columnValues[headerMapping["variant_id"]])
+					civic_url = columnValues[headerMapping["variant_civic_url"]]
+					gene_symbol = columnValues[headerMapping["gene"]]
+					entrez_id = columnValues[headerMapping["entrez_id"]]
+					variant = columnValues[headerMapping["variant"]]
+					var_description = columnValues[headerMapping["summary"]]
+					var_groups = columnValues[headerMapping["variant_groups"]]
+					var_types = columnValues[headerMapping["variant_types"]]
+					ref_bases = columnValues[headerMapping["reference_bases"]]
+					var_bases = columnValues[headerMapping["variant_bases"]]
+					ensemble = columnValues[headerMapping["ensembl_version"]]
+					ref_build = columnValues[headerMapping["reference_build"]]
+					chr_1 = columnValues[headerMapping["chromosome"]]
+					chr_start = columnValues[headerMapping["start"]]
+					chr_stop = columnValues[headerMapping["stop"]]
+					representative_transcript = columnValues[headerMapping["representative_transcript"]]
+					chr_2 = columnValues[headerMapping["chromosome2"]]
+					chr_2_start = columnValues[headerMapping["start2"]]
+					chr_2_stop = columnValues[headerMapping["stop2"]]
+					representative_transcript_2 = columnValues[headerMapping["representative_transcript2"]]
+					allele_registry_id = columnValues[headerMapping["allele_registry_id"]]
+					civic_evidence_score = columnValues[headerMapping["civic_variant_evidence_score"]]
+					civic_assertion_id = columnValues[headerMapping["assertion_ids"]]
+					civic_assertion_url = columnValues[headerMapping["assertion_civic_urls"]]
+					civic_is_flagged = columnValues[headerMapping["is_flagged"]]
+					clinvar_ids = columnValues[headerMapping["clinvar_ids"]]
+					var_alias = columnValues[headerMapping["variant_aliases"]]
 										
-					cur.execute("""
+					variant_query = """
 						INSERT INTO variant(
-							allele_id,
-							name,
-							type,
-							dbsnp_id,
-							phenotype_list,
-							gene_id,
-							gene_symbol,
-							hgnc_id,
-							assembly,
-							chro,
-							chro_start,
-							chro_stop,
-							ref_allele,
-							alt_allele,
-							cytogenetic,
-							variation_id)
-						VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
-					""", (allele_id,name,allele_type,dbSNP_id,phenotype_list,gene_id,gene_symbol,HGNC_ID,assembly,chro,chro_start,chro_stop,ref_allele,alt_allele,cytogenetic,variation_id))
+							variant_id, civic_url, gene_symbol, entrez_id, variant, var_description,
+							var_groups, var_types, ref_bases, var_bases, ensemble, ref_build,
+							chr_1, chr_start, chr_stop, representative_transcript, chr_2,
+							chr_2_start, chr_2_stop, representative_transcript_2, allele_registry_id,
+							civic_evidence_score, civic_assertion_id, civic_assertion_url,
+							civic_is_flagged, clinvar_ids, var_alias)
+						VALUES(
+							?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?
+						)
+					"""
+					bindings = (
+						variant_id,civic_url,gene_symbol,entrez_id,variant,var_description,
+						var_groups,var_types,ref_bases,var_bases,ensemble,ref_build,chr_1,chr_start,
+						chr_stop,representative_transcript,chr_2,chr_2_start,chr_2_stop,
+						representative_transcript_2,allele_registry_id,civic_assertion_url,
+						civic_evidence_score,civic_assertion_id,civic_is_flagged,clinvar_ids,var_alias
+					)
+
+					cur.execute(variant_query,bindings)
 					
-					# The autoincremented value is got here
-					### WTF is going on here
-					ventry_id = cur.lastrowid
+					# Table gene
+					variant_id = int(columnValues[headerMapping["variant_id"]])
+					gene_symbol = columnValues[headerMapping["gene"]]
+					entrez_id = columnValues[headerMapping["entrez_id"]]
 					
-					## Table gene
-					#gene_id = columnValues[headerMapping["GeneID"]]
-					#gene_symbol = columnValues[headerMapping["GeneSymbol"]]
-					#HGNC_ID = columnValues[headerMapping["HGNC_ID"]]
-					#
-					#if gene_id not in known_genes:
-					#	cur.execute("""
-					#		INSERT INTO gene(
-					#			gene_id,
-					#			gene_symbol,
-					#			hgnc_id)
-					#		VALUES(?,?,?)
-					#	""", (gene_id,gene_symbol,HGNC_ID))
-					#	known_genes.add(gene_id)
+					cur.execute("""
+					INSERT INTO gene(
+						variant_id,
+						gene_symbol,
+						entrez_id)
+					VALUES(?,?,?)
+					""", (variant_id,gene_symbol,entrez_id))
 					
-					# Clinical significance
-					significance = columnValues[headerMapping["ClinicalSignificance"]]
-					if significance is not None:
-						prep_sig = [ (ventry_id, sig)  for sig in re.split(r"/",significance) ]
+					
+					# HGVS
+					variant_id = int(columnValues[headerMapping["variant_id"]])
+					hgvs_expression = columnValues[headerMapping["hgvs_expressions"]]
+					if hgvs_expression is not None:
+						prep_hgvs = [ (variant_id, hgvs_expression) for hgvs_expression in re.split(r",",hgvs_expression) ]
 						cur.executemany("""
-							INSERT INTO clinical_sig(
-								ventry_id,
-								significance)
+							INSERT INTO hgvs_expressions(
+								variant_id,
+								hgvs_expression)
 							VALUES(?,?)
-						""", prep_sig)
-					
-					# Review status
-					### GOTTA REVISE WHAT THIS **executemany** does
-					status_str = columnValues[headerMapping["ReviewStatus"]]
-					if status_str is not None:
-						prep_status = [ (ventry_id, status)  for status in re.split(r", ",status_str) ]
-						cur.executemany("""
-							INSERT INTO review_status(
-								ventry_id,
-								status)
-							VALUES(?,?)
-						""", prep_status)
-					
-					# Variant Phenotypes
-					variant_pheno_str = columnValues[headerMapping["PhenotypeIDS"]]
-					if variant_pheno_str is not None:
-						variant_pheno_list = re.split(r"[;|]",variant_pheno_str)
-						prep_pheno = []
-						for phen_group_id, variant_pheno in enumerate(variant_pheno_list):
-							if len(variant_pheno) == 0:
-								continue
-							if re.search("^[1-9][0-9]* conditions$", variant_pheno):
-								print("INFO: Long PhenotypeIDs {} {}: {}".format(allele_id, assembly, variant_pheno))
-								continue
-							variant_annots = re.split(r",",variant_pheno)
-							for variant_annot in variant_annots:
-								phen = variant_annot.split(":")
-								if len(phen) > 1:
-									phen_ns , phen_id = phen[0:2]
-									prep_pheno.append((ventry_id,phen_group_id,phen_ns,phen_id))
-								elif variant_annot != "na":
-									print("DEBUG: {} {} {}\n\t{}\n\t{}".format(allele_id,assembly,variant_annot,variant_pheno_str,line),file=sys.stderr)
-						
-						cur.executemany("""
-							INSERT INTO variant_phenotypes(
-								ventry_id,
-								phen_group_id,
-								phen_ns,
-								phen_id)
-							VALUES(?,?,?,?)
-						""", prep_pheno)
+						""", prep_hgvs)
 		
 		cur.close()
 
 if __name__ == '__main__':
 	if len(sys.argv) < 3:
-		print("Usage: {0} {{database_file}} {{compressed_clinvar_file}}".format(sys.argv[0]), file=sys.stderr)
+		print("Usage: {0} {{database_file}} {{civic_file}}".format(sys.argv[0]), file=sys.stderr)
 		sys.exit(1)
 
 	# Only the first and second parameters are considered
 	db_file = sys.argv[1]
-	clinvar_file = sys.argv[2]
+	civic_file = sys.argv[2]
 
 	# First, let's create or open the database
-	db = open_clinvar_db(db_file)
+	db = open_civic_db(db_file)
 
 	# Second
-	store_civic_file(db,clinvar_file)
+	store_civic_file(db,civic_file)
 
 	db.close()
