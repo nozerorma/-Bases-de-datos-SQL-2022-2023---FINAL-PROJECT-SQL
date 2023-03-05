@@ -1,7 +1,6 @@
 # ------------------------------------------------------------------------------
 # civic_parser.py
-# Based on clinva
-# r_parser.py, further info see https://bbddmasterisciii.github.io/files/clinvar_parser.py
+# Based on clinvar_parser.py, further info see https://bbddmasterisciii.github.io/files/clinvar_parser.py
 # Copyright © 2019–2023 Eduardo Andrés & José Mª Fernández
 # All rights reserved.
 #
