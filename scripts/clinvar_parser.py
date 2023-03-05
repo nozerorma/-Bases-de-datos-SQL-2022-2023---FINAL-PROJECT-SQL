@@ -12,11 +12,8 @@
 # -*- coding: utf-8 -*-
 
 import sys, os
-
 import sqlite3
-
 import gzip
-
 import re
 
 CLINVAR_TABLE_DEFS = [
