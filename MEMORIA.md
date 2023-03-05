@@ -14,8 +14,6 @@ El objetivo de este trabajo consistió en aprender a trabajar con bases de datos
 
 Misma lógica programática seguida en el script *clinvar_parser.py*, creando una nueva tabla específica para la carga de las citaciones contenidas en el fichero *var_citations.txt*, y simplificando el código.
 
-
-
 #### 2) Carga de fichero de estadísticas por gen de ClinVar en la BBDD generada por *clinvar_parser.py*
 
 Igual que el anterior, introduciendo el siguiente bloque de código (ln 63-67) para procesar la primera línea del fichero: 
@@ -31,3 +29,5 @@ Igual que el anterior, introduciendo el siguiente bloque de código (ln 63-67) p
 En este caso, el fichero utilizado fue *gene_specific_summary_2022-(mm).txt.gz*, en sus versiones congeladas de junio y de septiembre de 2022.
 
 #### 3) Elaboración de BBDD de CIViC a partir del fichero *01-(MMM)-2022-VariantSummaries.tsv*
+
+En este tercer caso, también se tomo como referencia el script anteriormente referido. Debido a la estructura del fichero *...VariantSummaries.tsv*, se decidió purgar gran cantidad de código no útil en el procesamiento de este fichero. Así mismo, se crearon tres tablas: una *(gene)* con información sobre el gen específico y sus respectivas entradas modelo **entrez_id**; en otra tabla *(variant)* se introdujo el grueso de la información contenida en la base de datos de CIViC; y una tercera en la que se incluyeron las expresiones HGVS de manera más ordenada. También se indexaron varias claves de las tablas para optimizar su acceso durante la realización de la segunda parte del ejercicio.
