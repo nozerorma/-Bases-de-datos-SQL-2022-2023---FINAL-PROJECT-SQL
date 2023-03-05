@@ -1,6 +1,7 @@
 # ------------------------------------------------------------------------------
 # civic_parser.py
-# Based on clinvar_parser.py, further info see https://bbddmasterisciii.github.io/files/clinvar_parser.py
+# Based on clinva
+# r_parser.py, further info see https://bbddmasterisciii.github.io/files/clinvar_parser.py
 # Copyright © 2019–2023 Eduardo Andrés & José Mª Fernández
 # All rights reserved.
 #
@@ -13,11 +14,7 @@
 # -*- coding: utf-8 -*-
 
 import sys, os
-
 import sqlite3
-
-import gzip
-
 import re
 
 CIVIC_TABLE_DEFS = [
@@ -25,38 +22,61 @@ CIVIC_TABLE_DEFS = [
 CREATE TABLE IF NOT EXISTS gene (
 	variant_id INTEGER PRIMARY KEY, 
 	gene_symbol VARCHAR(16) NOT NULL,
-	entrez_id INTEGER NOT NULL
+	entrez_id INTEGER NOT NULL,
+	
 )
+"""
+,
+"""
+CREATE INDEX gene_entrez_id ON gene(entrez_id)
+"""
+,
+"""
+CREATE INDEX gene_sym ON gene(gene_symbol)
 """
 ,
 """
 CREATE TABLE IF NOT EXISTS variant (
 	variant_id INTEGER PRIMARY KEY,
 	civic_url VARCHAR(40) NOT NULL,
-	gene_symbol VARCHAR(10),
-	 VARCHAR(256) NOT NULL,
-	dbSNP_id INTEGER NOT NULL,
-	phenotype_list VARCHAR(4096),
-	gene_id INTEGER,
-	gene_symbol VARCHAR(64),
-	HGNC_ID VARCHAR(64),
-	assembly VARCHAR(16),
-	chro VARCHAR(16) NOT NULL,
-	chro_start INTEGER NOT NULL,
-	chro_stop INTEGER NOT NULL,
-	ref_allele VARCHAR(4096),
-	alt_allele VARCHAR(4096),
-	cytogenetic VARCHAR(64),
-	variation_id INTEGER NOT NULL
+	gene_symbol VARCHAR(10) NULL,
+	entrez_id INTEGER NOT NULL,
+	variant VARCHAR(128) NOT NULL,
+	var_description VARCHAR (4096) NULL, 
+	var_groups VARCHAR(64) NULL,
+	var_types VARCHAR(64) NULL,
+	ref_bases VARCHAR(32) NULL,
+	var_bases VARCHAR(32) NULL,
+	ensemble INTEGER NOT NULL,
+	ref_build VARCHAR(32) NOT NULL,
+	chr_1 INTEGER NULL,
+	chr_start INTEGER NULL,
+	chr_stop INTEGER NULL,
+	representative_transcript VARCHAR(48) NULL,
+	chr_2 INTEGER NULL,
+	chr_2_start INTEGER NULL,
+	chr_2_stop INTEGER NULL,
+	representative_transcript_2 VARCHAR(48) NULL
+	allele_registry_id VARCHAR(64) NULL,
+	civic_evidence_score INTEGER NOT NULL,
+	civic_assertion_id INTEGER NULL,
+	civic_assertion_url VARCHAR(128) NULL,
+	civic_is_flagged VARCHAR(64) NULL,
+	clinvar_ids INTEGER NULL,
+	var_alias VARCHAR(48) NULL
 )
 """
 ,
 """
-CREATE INDEX coords_variant ON variant(chro_start,chro_stop,chro)
+CREATE INDEX assembly_variant ON variant(ensemble, ref_build)
 """
 ,
 """
-CREATE INDEX assembly_variant ON variant(assembly)
+CREATE INDEX coords_variant ON variant(chr_start,chr_stop,chr_1,representative_transcript)
+"""
+,
+"""
+CREATE INDEX coords_2_variant ON variant(chro_2_start,chro_2_stop,chr_2,representative_transcript_2)
 """
 ,
 """
@@ -64,51 +84,27 @@ CREATE INDEX gene_symbol_variant ON variant(gene_symbol)
 """
 ,
 """
-CREATE TABLE IF NOT EXISTS gene2variant (
-	gene_symbol VARCHAR(64) NOT NULL,
-	ventry_id INTEGER NOT NULL,
-	PRIMARY KEY (ventry_id, gene_symbol),
-	FOREIGN KEY (gene_symbol) REFERENCES gene(gene_symbol)
+CREATE TABLE IF NOT EXISTS hgvs_expressions (
+	variant_id INTEGER PRIMARY KEY,
+	hgvs_expression VARCHAR(64) NULL,
+	FOREIGN KEY (variant_id) REFERENCES gene(variant_id)
 		ON DELETE CASCADE ON UPDATE CASCADE,
-	FOREIGN KEY (ventry_id) REFERENCES variant(ventry_id)
+	FOREIGN KEY (variant_id) REFERENCES variant(variant_id)
 		ON DELETE CASCADE ON UPDATE CASCADE
 )
 """
 ,
 """
-CREATE TABLE IF NOT EXISTS clinical_sig (
-	ventry_id INTEGER NOT NULL,
-	significance VARCHAR(64) NOT NULL,
-	FOREIGN KEY (ventry_id) REFERENCES variant(ventry_id)
-		ON DELETE CASCADE ON UPDATE CASCADE
-)
-"""
-,
-"""
-CREATE TABLE IF NOT EXISTS review_status (
-	ventry_id INTEGER NOT NULL,
-	status VARCHAR(64) NOT NULL,
-	FOREIGN KEY (ventry_id) REFERENCES variant(ventry_id)
-		ON DELETE CASCADE ON UPDATE CASCADE
-)
-"""
-,
-"""
-CREATE TABLE IF NOT EXISTS variant_phenotypes (
-	ventry_id INTEGER NOT NULL,
-	phen_group_id INTEGER NOT NULL,
-	phen_ns VARCHAR(64) NOT NULL,
-	phen_id VARCHAR(64) NOT NULL,
-	FOREIGN KEY (ventry_id) REFERENCES variant(ventry_id)
-		ON DELETE CASCADE ON UPDATE CASCADE
-)
-"""
+CREATE TABLE IF NOT EXISTS review_status
+	variant_id INTEGER PRIMARY KEY,
+
+	"""
 ]
 
 def open_clinvar_db(db_file):
 	"""
 		This method creates a SQLITE3 database with the needed
-		tables to store clinvar data, or opens it if it already
+		tables to store civic data, or opens it if it already
 		exists
 	"""
 	
@@ -121,7 +117,7 @@ def open_clinvar_db(db_file):
 		
 		# And create the tables, in case they were not previously
 		# created in a previous use
-		for tableDecl in CLINVAR_TABLE_DEFS:
+		for tableDecl in CIVIC_TABLE_DEFS:
 			cur.execute(tableDecl)
 	except sqlite3.Error as e:
 		print("An error occurred: {}".format(str(e)), file=sys.stderr)
@@ -130,54 +126,33 @@ def open_clinvar_db(db_file):
 	
 	return db
 	
-def store_clinvar_file(db,clinvar_file):
-	with gzip.open(clinvar_file,"rt",encoding="utf-8") as cf:
+def store_civic_file(db,civic_file):
+	with open(civic_file,"rt",encoding="utf-8") as cf:
 		headerMapping = None
-		known_genes = set()
-		# This variable teaches the code that the file being
-		# parsed has new VCF coordinate, reference and alternate
-		# allele columns
-		newVCFCoords = False
-		
+
 		cur = db.cursor()
 		
 		with db:
 			for line in cf:
-				# First, let's remove the newline
 				wline = line.rstrip("\n")
-				
-				# Now, detecting the header
 				if (headerMapping is None) and (wline[0] == '#'):
 					wline = wline.lstrip("#")
 					columnNames = re.split(r"\t",wline)
-					
 					headerMapping = {}
-					# And we are saving the correspondence of column name and id
 					for columnId, columnName in enumerate(columnNames):
 						headerMapping[columnName] = columnId
-					
-					newVCFCoords = 'PositionVCF' in headerMapping
-					if newVCFCoords:
-						refAlleleCol = headerMapping["ReferenceAlleleVCF"]
-						altAlleleCol = headerMapping["AlternateAlleleVCF"]
-						# 'PositionVCF' might be more important than 'Start'
-						# but the program is ignoring it for now
-					else:
-						refAlleleCol = headerMapping["ReferenceAllele"]
-						altAlleleCol = headerMapping["AlternateAllele"]
 				else:
-					# We are reading the file contents	
 					columnValues = re.split(r"\t",wline)
 					
 					# As these values can contain "nulls", which are
-					# designed as '-', substitute them for None
+					# designed as 'N/A', substitute them for None
 					for iCol, vCol in enumerate(columnValues):
-						if len(vCol) == 0 or vCol == "-":
+						if len(vCol) == 0 or vCol == "N/A":
 							columnValues[iCol] = None
 					
 					# And extracting what we really need
 					# Table variation
-					allele_id = int(columnValues[headerMapping["AlleleID"]])
+					variant_id = int(columnValues[headerMapping["VariationID"]])
 					name = columnValues[headerMapping["Name"]]
 					allele_type = columnValues[headerMapping["Type"]]
 					dbSNP_id = columnValues[headerMapping["RS# (dbSNP)"]]
@@ -194,13 +169,7 @@ def store_clinvar_file(db,clinvar_file):
 					gene_id = columnValues[headerMapping["GeneID"]]
 					gene_symbol = columnValues[headerMapping["GeneSymbol"]]
 					HGNC_ID = columnValues[headerMapping["HGNC_ID"]]
-					
-					#if assembly is None:
-					#	print("DEBUGAN: "+line,file=sys.stderr)
-					#	sys.stderr.flush()
-					#	#continue
-					
-					
+										
 					cur.execute("""
 						INSERT INTO variant(
 							allele_id,
@@ -308,6 +277,6 @@ if __name__ == '__main__':
 	db = open_clinvar_db(db_file)
 
 	# Second
-	store_clinvar_file(db,clinvar_file)
+	store_civic_file(db,clinvar_file)
 
 	db.close()
