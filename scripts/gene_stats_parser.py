@@ -49,7 +49,6 @@ def open_clinvar_db(db_file):
 
 	cur = db.cursor()
 	try:
-		# Let's enable the foreign keys integrity checks
 		cur.execute("PRAGMA FOREIGN_KEYS=ON")
 		for tableDecl in CLINVAR_STATS_DEFS:
 			cur.execute(tableDecl)
@@ -63,36 +62,26 @@ def open_clinvar_db(db_file):
 def store_clinvar_stats(db, stats_file):
     with gzip.open(stats_file, "rt", encoding="utf-8") as sf:
         headerMapping = None
+        # Skip first line from the file
         next(sf)
         cur = db.cursor()
 
         with db:
             for line in sf:
-                # First, let's remove the newline
                 wline = line.rstrip("\n")
-
-                # Now, detecting the header
                 if (headerMapping is None) and (wline[0] == '#'):
                     wline = wline.lstrip("#")
                     columnNames = re.split(r"\t", wline)
-
                     headerMapping = {}
-                    # And we are saving the correspondence of column name and id
                     for columnId, columnName in enumerate(columnNames):
                         headerMapping[columnName] = columnId
 
                 else:
-                    # We are reading the file contents
                     columnValues = re.split(r"\t", wline)
-
-                    # As these values can contain "nulls", which are
-                    # designed as '-', substitute them for None
                     for iCol, vCol in enumerate(columnValues):
                         if len(vCol) == 0 or vCol == "-":
                             columnValues[iCol] = None
-                    
-                    # And extracting what we really need
-                    # Table variation
+			        
                     gene_symbol = columnValues[headerMapping["Symbol"]]
                     geneID = int(columnValues[headerMapping["GeneID"]])
                     total_submissions = int(columnValues[headerMapping["Total_submissions"]])
