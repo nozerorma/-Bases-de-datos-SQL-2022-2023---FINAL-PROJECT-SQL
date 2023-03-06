@@ -12,7 +12,7 @@ El objetivo de este trabajo consistió en aprender a trabajar con bases de datos
 
 #### 1) Carga de fichero de referencias de ClinVar en la BBDD generada por *clinvar_parser.py*
 
-Misma lógica programática seguida en el script *clinvar_parser.py*, creando una nueva tabla específica para la carga de las citaciones contenidas en el fichero *var_citations.txt*, y simplificando el código.
+Misma lógica programática seguida en el script *clinvar_parser.py*, creando una nueva tabla específica para la carga de las citaciones contenidas en el fichero *var_cditations.txt*, y simplificando el código.
 
 #### 2) Carga de fichero de estadísticas por gen de ClinVar en la BBDD generada por *clinvar_parser.py*
 
@@ -31,3 +31,9 @@ En este caso, el fichero utilizado fue *gene_specific_summary_2022-(mm).txt.gz*,
 #### 3) Elaboración de BBDD de CIViC a partir del fichero *01-(MMM)-2022-VariantSummaries.tsv*
 
 En este tercer caso, también se tomo como referencia el script anteriormente referido. Debido a la estructura del fichero *...VariantSummaries.tsv*, se decidió purgar gran cantidad de código no útil en el procesamiento de este fichero. Así mismo, se crearon tres tablas: una *(gene)* con información sobre el gen específico y sus respectivas entradas modelo **entrez_id**; en otra tabla *(variant)* se introdujo el grueso de la información contenida en la base de datos de CIViC; y una tercera en la que se incluyeron las expresiones HGVS de manera más ordenada. También se indexaron varias claves de las tablas para optimizar su acceso durante la realización de la segunda parte del ejercicio.
+
+A diferencia de los datos de ClinVar, en CIViC, las celdas que no tienen información vienen asignadas con N/A; esto debe ser reflejado en el código para realizar correctamente el cambio a NULL a la hora de insertar los datos en la BBDD.
+
+#### 3.5) Elaboración de BBDD de CIViC a partir del fichero *01-(MMM)-2022-VariantSummaries.tsv*
+
+Para una mayor integridad de los datos, se decidió realizar un script adicional conteniendo la información de referencias y evidencia, "a la" ClinVar. De esta manera, mantuve una mayor lógica estructural en mi cabeza a la hora de entender qué estaba haciendo. El script se calcó al de CIViC original, modificando los datos requeridos. También lo hice para forzarme a escribir más código y a seguir entendiendo qué es lo que estabamos intentando hacer.
