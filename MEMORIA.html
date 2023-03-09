@@ -1,0 +1,1675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MEMORIA TRABAJO SQL</title>
+  <style>
+  @font-face {
+  font-family: octicons-link;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+.markdown-body .octicon {
+  display: inline-block;
+  fill: currentColor;
+  vertical-align: text-bottom;
+}
+
+.markdown-body .anchor {
+  float: left;
+  line-height: 1;
+  margin-left: -20px;
+  padding-right: 4px;
+}
+
+.markdown-body .anchor:focus {
+  outline: none;
+}
+
+.markdown-body h1 .octicon-link,
+.markdown-body h2 .octicon-link,
+.markdown-body h3 .octicon-link,
+.markdown-body h4 .octicon-link,
+.markdown-body h5 .octicon-link,
+.markdown-body h6 .octicon-link {
+  color: #1b1f23;
+  vertical-align: middle;
+  visibility: hidden;
+}
+
+.markdown-body h1:hover .anchor,
+.markdown-body h2:hover .anchor,
+.markdown-body h3:hover .anchor,
+.markdown-body h4:hover .anchor,
+.markdown-body h5:hover .anchor,
+.markdown-body h6:hover .anchor {
+  text-decoration: none;
+}
+
+.markdown-body h1:hover .anchor .octicon-link,
+.markdown-body h2:hover .anchor .octicon-link,
+.markdown-body h3:hover .anchor .octicon-link,
+.markdown-body h4:hover .anchor .octicon-link,
+.markdown-body h5:hover .anchor .octicon-link,
+.markdown-body h6:hover .anchor .octicon-link {
+  visibility: visible;
+}
+
+.markdown-body {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  color: #24292e;
+  line-height: 1.5;
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+  font-size: 16px;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
+.markdown-body .pl-c {
+  color: #6a737d;
+}
+
+.markdown-body .pl-c1,
+.markdown-body .pl-s .pl-v {
+  color: #005cc5;
+}
+
+.markdown-body .pl-e,
+.markdown-body .pl-en {
+  color: #6f42c1;
+}
+
+.markdown-body .pl-s .pl-s1,
+.markdown-body .pl-smi {
+  color: #24292e;
+}
+
+.markdown-body .pl-ent {
+  color: #22863a;
+}
+
+.markdown-body .pl-k {
+  color: #d73a49;
+}
+
+.markdown-body .pl-pds,
+.markdown-body .pl-s,
+.markdown-body .pl-s .pl-pse .pl-s1,
+.markdown-body .pl-sr,
+.markdown-body .pl-sr .pl-cce,
+.markdown-body .pl-sr .pl-sra,
+.markdown-body .pl-sr .pl-sre {
+  color: #032f62;
+}
+
+.markdown-body .pl-smw,
+.markdown-body .pl-v {
+  color: #e36209;
+}
+
+.markdown-body .pl-bu {
+  color: #b31d28;
+}
+
+.markdown-body .pl-ii {
+  background-color: #b31d28;
+  color: #fafbfc;
+}
+
+.markdown-body .pl-c2 {
+  background-color: #d73a49;
+  color: #fafbfc;
+}
+
+.markdown-body .pl-c2:before {
+  content: "^M";
+}
+
+.markdown-body .pl-sr .pl-cce {
+  color: #22863a;
+  font-weight: 700;
+}
+
+.markdown-body .pl-ml {
+  color: #735c0f;
+}
+
+.markdown-body .pl-mh,
+.markdown-body .pl-mh .pl-en,
+.markdown-body .pl-ms {
+  color: #005cc5;
+  font-weight: 700;
+}
+
+.markdown-body .pl-mi {
+  color: #24292e;
+  font-style: italic;
+}
+
+.markdown-body .pl-mb {
+  color: #24292e;
+  font-weight: 700;
+}
+
+.markdown-body .pl-md {
+  background-color: #ffeef0;
+  color: #b31d28;
+}
+
+.markdown-body .pl-mi1 {
+  background-color: #f0fff4;
+  color: #22863a;
+}
+
+.markdown-body .pl-mc {
+  background-color: #ffebda;
+  color: #e36209;
+}
+
+.markdown-body .pl-mi2 {
+  background-color: #005cc5;
+  color: #f6f8fa;
+}
+
+.markdown-body .pl-mdr {
+  color: #6f42c1;
+  font-weight: 700;
+}
+
+.markdown-body .pl-ba {
+  color: #586069;
+}
+
+.markdown-body .pl-sg {
+  color: #959da5;
+}
+
+.markdown-body .pl-corl {
+  color: #032f62;
+  text-decoration: underline;
+}
+
+.markdown-body details {
+  display: block;
+}
+
+.markdown-body summary {
+  display: list-item;
+}
+
+.markdown-body a {
+  background-color: transparent;
+}
+
+.markdown-body a:active,
+.markdown-body a:hover {
+  outline-width: 0;
+}
+
+.markdown-body strong {
+  font-weight: inherit;
+  font-weight: bolder;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  margin: .67em 0;
+}
+
+.markdown-body img {
+  border-style: none;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre {
+  font-family: monospace,monospace;
+  font-size: 1em;
+}
+
+.markdown-body hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+}
+
+.markdown-body input {
+  font: inherit;
+  margin: 0;
+}
+
+.markdown-body input {
+  overflow: visible;
+}
+
+.markdown-body [type=checkbox] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.markdown-body * {
+  box-sizing: border-box;
+}
+
+.markdown-body input {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.markdown-body a {
+  color: #0366d6;
+  text-decoration: none;
+}
+
+.markdown-body a:hover {
+  text-decoration: underline;
+}
+
+.markdown-body strong {
+  font-weight: 600;
+}
+
+.markdown-body hr {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #dfe2e5;
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+}
+
+.markdown-body hr:before {
+  content: "";
+  display: table;
+}
+
+.markdown-body hr:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.markdown-body table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body details summary {
+  cursor: pointer;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.markdown-body h1 {
+  font-size: 32px;
+}
+
+.markdown-body h1,
+.markdown-body h2 {
+  font-weight: 600;
+}
+
+.markdown-body h2 {
+  font-size: 24px;
+}
+
+.markdown-body h3 {
+  font-size: 20px;
+}
+
+.markdown-body h3,
+.markdown-body h4 {
+  font-weight: 600;
+}
+
+.markdown-body h4 {
+  font-size: 16px;
+}
+
+.markdown-body h5 {
+  font-size: 14px;
+}
+
+.markdown-body h5,
+.markdown-body h6 {
+  font-weight: 600;
+}
+
+.markdown-body h6 {
+  font-size: 12px;
+}
+
+.markdown-body p {
+  margin-bottom: 10px;
+  margin-top: 0;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+}
+
+.markdown-body ol,
+.markdown-body ul {
+  margin-bottom: 0;
+  margin-top: 0;
+  padding-left: 0;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ol ol ol,
+.markdown-body ol ul ol,
+.markdown-body ul ol ol,
+.markdown-body ul ul ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body code,
+.markdown-body pre {
+  font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+  font-size: 12px;
+}
+
+.markdown-body pre {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.markdown-body input::-webkit-inner-spin-button,
+.markdown-body input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+.markdown-body .border {
+  border: 1px solid #e1e4e8!important;
+}
+
+.markdown-body .border-0 {
+  border: 0!important;
+}
+
+.markdown-body .border-bottom {
+  border-bottom: 1px solid #e1e4e8!important;
+}
+
+.markdown-body .rounded-1 {
+  border-radius: 3px!important;
+}
+
+.markdown-body .bg-white {
+  background-color: #fff!important;
+}
+
+.markdown-body .bg-gray-light {
+  background-color: #fafbfc!important;
+}
+
+.markdown-body .text-gray-light {
+  color: #6a737d!important;
+}
+
+.markdown-body .mb-0 {
+  margin-bottom: 0!important;
+}
+
+.markdown-body .my-2 {
+  margin-bottom: 8px!important;
+  margin-top: 8px!important;
+}
+
+.markdown-body .pl-0 {
+  padding-left: 0!important;
+}
+
+.markdown-body .py-0 {
+  padding-bottom: 0!important;
+  padding-top: 0!important;
+}
+
+.markdown-body .pl-1 {
+  padding-left: 4px!important;
+}
+
+.markdown-body .pl-2 {
+  padding-left: 8px!important;
+}
+
+.markdown-body .py-2 {
+  padding-bottom: 8px!important;
+  padding-top: 8px!important;
+}
+
+.markdown-body .pl-3,
+.markdown-body .px-3 {
+  padding-left: 16px!important;
+}
+
+.markdown-body .px-3 {
+  padding-right: 16px!important;
+}
+
+.markdown-body .pl-4 {
+  padding-left: 24px!important;
+}
+
+.markdown-body .pl-5 {
+  padding-left: 32px!important;
+}
+
+.markdown-body .pl-6 {
+  padding-left: 40px!important;
+}
+
+.markdown-body .f6 {
+  font-size: 12px!important;
+}
+
+.markdown-body .lh-condensed {
+  line-height: 1.25!important;
+}
+
+.markdown-body .text-bold {
+  font-weight: 600!important;
+}
+
+.markdown-body:before {
+  content: "";
+  display: table;
+}
+
+.markdown-body:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.markdown-body>:first-child {
+  margin-top: 0!important;
+}
+
+.markdown-body>:last-child {
+  margin-bottom: 0!important;
+}
+
+.markdown-body a:not([href]) {
+  color: inherit;
+  text-decoration: none;
+}
+
+.markdown-body blockquote,
+.markdown-body dl,
+.markdown-body ol,
+.markdown-body p,
+.markdown-body pre,
+.markdown-body table,
+.markdown-body ul {
+  margin-bottom: 16px;
+  margin-top: 0;
+}
+
+.markdown-body hr {
+  background-color: #e1e4e8;
+  border: 0;
+  height: .25em;
+  margin: 24px 0;
+  padding: 0;
+}
+
+.markdown-body blockquote {
+  border-left: .25em solid #dfe2e5;
+  color: #6a737d;
+  padding: 0 1em;
+}
+
+.markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body kbd {
+  background-color: #fafbfc;
+  border: 1px solid #c6cbd1;
+  border-bottom-color: #959da5;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #959da5;
+  color: #444d56;
+  display: inline-block;
+  font-size: 11px;
+  line-height: 10px;
+  padding: 3px 5px;
+  vertical-align: middle;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  font-weight: 600;
+  line-height: 1.25;
+  margin-bottom: 16px;
+  margin-top: 24px;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+}
+
+.markdown-body h1,
+.markdown-body h2 {
+  border-bottom: 1px solid #eaecef;
+  padding-bottom: .3em;
+}
+
+.markdown-body h2 {
+  font-size: 1.5em;
+}
+
+.markdown-body h3 {
+  font-size: 1.25em;
+}
+
+.markdown-body h4 {
+  font-size: 1em;
+}
+
+.markdown-body h5 {
+  font-size: .875em;
+}
+
+.markdown-body h6 {
+  color: #6a737d;
+  font-size: .85em;
+}
+
+.markdown-body ol,
+.markdown-body ul {
+  padding-left: 2em;
+}
+
+.markdown-body ol ol,
+.markdown-body ol ul,
+.markdown-body ul ol,
+.markdown-body ul ul {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.markdown-body li {
+  word-wrap: break-all;
+}
+
+.markdown-body li>p {
+  margin-top: 16px;
+}
+
+.markdown-body li+li {
+  margin-top: .25em;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  font-size: 1em;
+  font-style: italic;
+  font-weight: 600;
+  margin-top: 16px;
+  padding: 0;
+}
+
+.markdown-body dl dd {
+  margin-bottom: 16px;
+  padding: 0 16px;
+}
+
+.markdown-body table {
+  display: block;
+  overflow: auto;
+  width: 100%;
+}
+
+.markdown-body table th {
+  font-weight: 600;
+}
+
+.markdown-body table td,
+.markdown-body table th {
+  border: 1px solid #dfe2e5;
+  padding: 6px 13px;
+}
+
+.markdown-body table tr {
+  background-color: #fff;
+  border-top: 1px solid #c6cbd1;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f6f8fa;
+}
+
+.markdown-body img {
+  background-color: #fff;
+  box-sizing: content-box;
+  max-width: 100%;
+}
+
+.markdown-body img[align=right] {
+  padding-left: 20px;
+}
+
+.markdown-body img[align=left] {
+  padding-right: 20px;
+}
+
+.markdown-body code {
+  background-color: rgba(27,31,35,.05);
+  border-radius: 3px;
+  font-size: 85%;
+  margin: 0;
+  padding: .2em .4em;
+}
+
+.markdown-body pre {
+  word-wrap: normal;
+}
+
+.markdown-body pre>code {
+  background: transparent;
+  border: 0;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  word-break: normal;
+}
+
+.markdown-body .highlight {
+  margin-bottom: 16px;
+}
+
+.markdown-body .highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body .highlight pre,
+.markdown-body pre {
+  background-color: #f6f8fa;
+  border-radius: 3px;
+  font-size: 85%;
+  line-height: 1.45;
+  overflow: auto;
+  padding: 16px;
+}
+
+.markdown-body pre code {
+  background-color: transparent;
+  border: 0;
+  display: inline;
+  line-height: inherit;
+  margin: 0;
+  max-width: auto;
+  overflow: visible;
+  padding: 0;
+  word-wrap: normal;
+}
+
+.markdown-body .commit-tease-sha {
+  color: #444d56;
+  display: inline-block;
+  font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+  font-size: 90%;
+}
+
+.markdown-body .blob-wrapper {
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.markdown-body .blob-wrapper-embedded {
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.markdown-body .blob-num {
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  color: rgba(27,31,35,.3);
+  cursor: pointer;
+  font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+  font-size: 12px;
+  line-height: 20px;
+  min-width: 50px;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: right;
+  user-select: none;
+  vertical-align: top;
+  white-space: nowrap;
+  width: 1%;
+}
+
+.markdown-body .blob-num:hover {
+  color: rgba(27,31,35,.6);
+}
+
+.markdown-body .blob-num:before {
+  content: attr(data-line-number);
+}
+
+.markdown-body .blob-code {
+  line-height: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  position: relative;
+  vertical-align: top;
+}
+
+.markdown-body .blob-code-inner {
+  color: #24292e;
+  font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+  font-size: 12px;
+  overflow: visible;
+  white-space: pre;
+  word-wrap: normal;
+}
+
+.markdown-body .pl-token.active,
+.markdown-body .pl-token:hover {
+  background: #ffea7f;
+  cursor: pointer;
+}
+
+.markdown-body kbd {
+  background-color: #fafbfc;
+  border: 1px solid #d1d5da;
+  border-bottom-color: #c6cbd1;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #c6cbd1;
+  color: #444d56;
+  display: inline-block;
+  font: 11px SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+  line-height: 10px;
+  padding: 3px 5px;
+  vertical-align: middle;
+}
+
+.markdown-body :checked+.radio-label {
+  border-color: #0366d6;
+  position: relative;
+  z-index: 1;
+}
+
+.markdown-body .tab-size[data-tab-size="1"] {
+  -moz-tab-size: 1;
+  tab-size: 1;
+}
+
+.markdown-body .tab-size[data-tab-size="2"] {
+  -moz-tab-size: 2;
+  tab-size: 2;
+}
+
+.markdown-body .tab-size[data-tab-size="3"] {
+  -moz-tab-size: 3;
+  tab-size: 3;
+}
+
+.markdown-body .tab-size[data-tab-size="4"] {
+  -moz-tab-size: 4;
+  tab-size: 4;
+}
+
+.markdown-body .tab-size[data-tab-size="5"] {
+  -moz-tab-size: 5;
+  tab-size: 5;
+}
+
+.markdown-body .tab-size[data-tab-size="6"] {
+  -moz-tab-size: 6;
+  tab-size: 6;
+}
+
+.markdown-body .tab-size[data-tab-size="7"] {
+  -moz-tab-size: 7;
+  tab-size: 7;
+}
+
+.markdown-body .tab-size[data-tab-size="8"] {
+  -moz-tab-size: 8;
+  tab-size: 8;
+}
+
+.markdown-body .tab-size[data-tab-size="9"] {
+  -moz-tab-size: 9;
+  tab-size: 9;
+}
+
+.markdown-body .tab-size[data-tab-size="10"] {
+  -moz-tab-size: 10;
+  tab-size: 10;
+}
+
+.markdown-body .tab-size[data-tab-size="11"] {
+  -moz-tab-size: 11;
+  tab-size: 11;
+}
+
+.markdown-body .tab-size[data-tab-size="12"] {
+  -moz-tab-size: 12;
+  tab-size: 12;
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.markdown-body .task-list-item input {
+  margin: 0 .2em .25em -1.6em;
+  vertical-align: middle;
+}
+
+.markdown-body hr {
+  border-bottom-color: #eee;
+}
+
+.markdown-body .pl-0 {
+  padding-left: 0!important;
+}
+
+.markdown-body .pl-1 {
+  padding-left: 4px!important;
+}
+
+.markdown-body .pl-2 {
+  padding-left: 8px!important;
+}
+
+.markdown-body .pl-3 {
+  padding-left: 16px!important;
+}
+
+.markdown-body .pl-4 {
+  padding-left: 24px!important;
+}
+
+.markdown-body .pl-5 {
+  padding-left: 32px!important;
+}
+
+.markdown-body .pl-6 {
+  padding-left: 40px!important;
+}
+
+.markdown-body .pl-7 {
+  padding-left: 48px!important;
+}
+
+.markdown-body .pl-8 {
+  padding-left: 64px!important;
+}
+
+.markdown-body .pl-9 {
+  padding-left: 80px!important;
+}
+
+.markdown-body .pl-10 {
+  padding-left: 96px!important;
+}
+
+.markdown-body .pl-11 {
+  padding-left: 112px!important;
+}
+
+.markdown-body .pl-12 {
+  padding-left: 128px!important;
+}
+
+/*# sourceURL=webpack://./node_modules/github-markdown-css/github-markdown.css */
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL25vZGVfbW9kdWxlcy9naXRodWItbWFya2Rvd24tY3NzL2dpdGh1Yi1tYXJrZG93bi5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSwwQkFBMEI7RUFDMUIsMkRBQXF0RTtBQUN2dEU7O0FBRUE7RUFDRSxxQkFBcUI7RUFDckIsa0JBQWtCO0VBQ2xCLDJCQUEyQjtBQUM3Qjs7QUFFQTtFQUNFLFdBQVc7RUFDWCxjQUFjO0VBQ2Qsa0JBQWtCO0VBQ2xCLGtCQUFrQjtBQUNwQjs7QUFFQTtFQUNFLGFBQWE7QUFDZjs7QUFFQTs7Ozs7O0VBTUUsY0FBYztFQUNkLHNCQUFzQjtFQUN0QixrQkFBa0I7QUFDcEI7O0FBRUE7Ozs7OztFQU1FLHFCQUFxQjtBQUN2Qjs7QUFFQTs7Ozs7O0VBTUUsbUJBQW1CO0FBQ3JCOztBQUVBO0VBQ0UsMEJBQTBCO0VBQzFCLDhCQUE4QjtFQUM5QixjQUFjO0VBQ2QsZ0JBQWdCO0VBQ2hCLGtJQUFrSTtFQUNsSSxlQUFlO0VBQ2YsZ0JBQWdCO0VBQ2hCLHFCQUFxQjtBQUN2Qjs7QUFFQTtFQUNFLGNBQWM7QUFDaEI7O0FBRUE7O0VBRUUsY0FBYztBQUNoQjs7QUFFQTs7RUFFRSxjQUFjO0FBQ2hCOztBQUVBOztFQUVFLGNBQWM7QUFDaEI7O0FBRUE7RUFDRSxjQUFjO0FBQ2hCOztBQUVBO0VBQ0UsY0FBYztBQUNoQjs7QUFFQTs7Ozs7OztFQU9FLGNBQWM7QUFDaEI7O0FBRUE7O0VBRUUsY0FBYztBQUNoQjs7QUFFQTtFQUNFLGNBQWM7QUFDaEI7O0FBRUE7RUFDRSx5QkFBeUI7RUFDekIsY0FBYztBQUNoQjs7QUFFQTtFQUNFLHlCQUF5QjtFQUN6QixjQUFjO0FBQ2hCOztBQUVBO0VBQ0UsYUFBYTtBQUNmOztBQUVBO0VBQ0UsY0FBYztFQUNkLGdCQUFnQjtBQUNsQjs7QUFFQTtFQUNFLGNBQWM7QUFDaEI7O0FBRUE7OztFQUdFLGNBQWM7RUFDZCxnQkFBZ0I7QUFDbEI7O0FBRUE7RUFD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 */
+  </style>
+  <style>
+  /**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: black;
+	background: none;
+	text-shadow: 0 1px white;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	font-size: 1em;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+@media print {
+	code[class*="language-"],
+	pre[class*="language-"] {
+		text-shadow: none;
+	}
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #f5f2f0;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: slategray;
+}
+
+.token.punctuation {
+	color: #999;
+}
+
+.token.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+	color: #9a6e3a;
+	/* This background color was intended by the author of this theme. */
+	background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+	color: #07a;
+}
+
+.token.function,
+.token.class-name {
+	color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+	color: #e90;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+
+/*# sourceURL=webpack://./node_modules/prismjs/themes/prism.css */
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL25vZGVfbW9kdWxlcy9wcmlzbWpzL3RoZW1lcy9wcmlzbS5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7Ozs7RUFJRTs7QUFFRjs7Q0FFQyxZQUFZO0NBQ1osZ0JBQWdCO0NBQ2hCLHdCQUF3QjtDQUN4QixzRUFBc0U7Q0FDdEUsY0FBYztDQUNkLGdCQUFnQjtDQUNoQixnQkFBZ0I7Q0FDaEIsb0JBQW9CO0NBQ3BCLGtCQUFrQjtDQUNsQixpQkFBaUI7Q0FDakIsZ0JBQWdCOztDQUVoQixnQkFBZ0I7Q0FDaEIsY0FBYztDQUNkLFdBQVc7O0NBRVgscUJBQXFCO0NBQ3JCLGtCQUFrQjtDQUNsQixpQkFBaUI7Q0FDakIsYUFBYTtBQUNkOztBQUVBOztDQUVDLGlCQUFpQjtDQUNqQixtQkFBbUI7QUFDcEI7O0FBRUE7O0NBRUMsaUJBQWlCO0NBQ2pCLG1CQUFtQjtBQUNwQjs7QUFFQTtDQUNDOztFQUVDLGlCQUFpQjtDQUNsQjtBQUNEOztBQUVBLGdCQUFnQjtBQUNoQjtDQUNDLFlBQVk7Q0FDWixjQUFjO0NBQ2QsY0FBYztBQUNmOztBQUVBOztDQUVDLG1CQUFtQjtBQUNwQjs7QUFFQSxnQkFBZ0I7QUFDaEI7Q0FDQyxhQUFhO0NBQ2IsbUJBQW1CO0NBQ25CLG1CQUFtQjtBQUNwQjs7QUFFQTs7OztDQUlDLGdCQUFnQjtBQUNqQjs7QUFFQTtDQUNDLFdBQVc7QUFDWjs7QUFFQTtDQUNDLFdBQVc7QUFDWjs7QUFFQTs7Ozs7OztDQU9DLFdBQVc7QUFDWjs7QUFFQTs7Ozs7O0NBTUMsV0FBVztBQUNaOztBQUVBOzs7OztDQUtDLGNBQWM7Q0FDZCxvRUFBb0U7Q0FDcEUsaUNBQWlDO0FBQ2xDOztBQUVBOzs7Q0FHQyxXQUFXO0FBQ1o7O0FBRUE7O0NBRUMsY0FBYztBQUNmOztBQUVBOzs7Q0FHQyxXQUFXO0FBQ1o7O0FBRUE7O0NBRUMsaUJBQWlCO0FBQ2xCO0FBQ0E7Q0FDQyxrQkFBa0I7QUFDbkI7O0FBRUE7Q0FDQyxZQUFZO0FBQ2IiLCJzb3VyY2VSb290IjoiIn0= */
+  </style>
+  <style>
+  
+  </style>
+  <style>
+    .markdown-body {
+      font-family: -apple-system,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+
+    @media not print {
+      .markdown-body {
+        padding: 45px;
+      }
+
+      @media (max-width: 767px) {
+        .markdown-body {
+          padding: 15px;
+        }
+      }
+    }
+
+    .hf-container {
+      color: #24292e;
+      line-height: 1.3;
+    }
+
+    .markdown-body .highlight pre,
+    .markdown-body pre {
+      white-space: pre-wrap;
+    }
+    .markdown-body table {
+      display: table;
+    }
+    .markdown-body img[data-align="center"] {
+      display: block;
+      margin: 0 auto;
+    }
+    .markdown-body img[data-align="right"] {
+      display: block;
+      margin: 0 0 0 auto;
+    }
+    .markdown-body li.task-list-item {
+      list-style-type: none;
+    }
+    .markdown-body li > [type=checkbox] {
+      margin: 0 0 0 -1.3em;
+    }
+    .markdown-body input[type="checkbox"] ~ p {
+      margin-top: 0;
+      display: inline-block;
+    }
+    .markdown-body ol ol,
+    .markdown-body ul ol {
+      list-style-type: decimal;
+    }
+    .markdown-body ol ol ol,
+    .markdown-body ol ul ol,
+    .markdown-body ul ol ol,
+    .markdown-body ul ul ol {
+      list-style-type: decimal;
+    }
+  </style>
+  <style>.markdown-body a.footnote-ref {
+  text-decoration: none;
+}
+
+.footnotes {
+  font-size: .85em;
+  opacity: .8;
+}
+
+.footnotes li[role="doc-endnote"] {
+  position: relative;
+}
+
+.footnotes .footnote-back {
+  position: absolute;
+  font-family: initial;
+  top: .2em;
+  right: 1em;
+  text-decoration: none;
+}
+
+.inline-math.invalid,
+.multiple-math.invalid {
+  color: rgb(255, 105, 105);
+}
+
+.toc-container {
+  width: 100%;
+}
+
+.toc-container .toc-title {
+  font-weight: 700;
+  font-size: 1.2em;
+  margin-bottom: 0;
+}
+
+.toc-container li,
+.toc-container ul,
+.toc-container ul li {
+  list-style: none !important;
+}
+
+.toc-container > ul {
+  padding-left: 0;
+}
+
+.toc-container ul li span {
+  display : flex;
+}
+
+.toc-container ul li span a {
+  color: inherit;
+  text-decoration: none;
+}
+.toc-container ul li span a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+
+.toc-container ul li span span.dots {
+  flex: 1;
+  height: 0.65em;
+  margin: 0 10px;
+  border-bottom: 2px dotted black;
+}
+
+/*# sourceURL=webpack://./src/muya/lib/assets/styles/exportStyle.css */
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL3NyYy9tdXlhL2xpYi9hc3NldHMvc3R5bGVzL2V4cG9ydFN0eWxlLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLHFCQUFxQjtBQUN2Qjs7QUFFQTtFQUNFLGdCQUFnQjtFQUNoQixXQUFXO0FBQ2I7O0FBRUE7RUFDRSxrQkFBa0I7QUFDcEI7O0FBRUE7RUFDRSxrQkFBa0I7RUFDbEIsb0JBQW9CO0VBQ3BCLFNBQVM7RUFDVCxVQUFVO0VBQ1YscUJBQXFCO0FBQ3ZCOztBQUVBOztFQUVFLHlCQUF5QjtBQUMzQjs7QUFFQTtFQUNFLFdBQVc7QUFDYjs7QUFFQTtFQUNFLGdCQUFnQjtFQUNoQixnQkFBZ0I7RUFDaEIsZ0JBQWdCO0FBQ2xCOztBQUVBOzs7RUFHRSwyQkFBMkI7QUFDN0I7O0FBRUE7RUFDRSxlQUFlO0FBQ2pCOztBQUVBO0VBQ0UsY0FBYztBQUNoQjs7QUFFQTtFQUNFLGNBQWM7RUFDZCxxQkFBcUI7QUFDdkI7QUFDQTtFQUNFLGNBQWM7RUFDZCxxQkFBcUI7QUFDdkI7O0FBRUE7RUFDRSxPQUFPO0VBQ1AsY0FBYztFQUNkLGNBQWM7RUFDZCwrQkFBK0I7QUFDakMiLCJzb3VyY2VSb290IjoiIn0= */</style>
+  <style>.markdown-body{}pre.front-matter{display:none!important;}</style>
+</head>
+<body>
+  <article class="markdown-body"><h1 class="atx" id="memoria-trabajo-sql">MEMORIA TRABAJO SQL</h1>
+<h2 class="atx" id="realizada-por-miguel-ramon-alonso-para-el-modulo-de-sql-del-master-de-bioinformatica">Realizada por Miguel Ramón Alonso para el módulo de SQL del Máster de Bioinformática</h2>
+<h6 class="atx" id="organizado-por-el-isciii-en-colaboracion-con-el-bsc-y-otras-instituciones">Organizado por el ISCIII en colaboración con el BSC y otras instituciones</h6>
+<h3 class="atx" id="introduccion">INTRODUCCIÓN</h3>
+<p>El objetivo de este trabajo consistió en aprender a trabajar con bases de datos relacionales SQL, utilizando la libreria OSS SQLite. Para la creación y modificación de dichas bases de datos, se propuso utilizar diversos scripts escritos en Python, los cuales se encargarían de relacionar la información contenida en los diversos ficheros almacenados en los históricos de ClinVar y CIViC requeridos para la realización de la práctica. Específicamente, se requirió el procesado de la base de datos de variantes de ClinVar, en sus versiones congeladas de junio y diciembre de 2022, mediante el script <em>clinvar_parser.py</em>; a continuación, debíamos escribir dos scripts más, basados en éste, los cuales se encargaran de añadir a la BBDD creada por dicho script la información hallada en los ficheros de citaciones y de estadísticas específicas de cada gen.  Paralelamente, debíamos realizar un script similar al modelo utilizado en clase para el parseo de la base de datos de variantes contenida en CIViC.</p>
+<h3 class="atx" id="primera-parte">PRIMERA PARTE</h3>
+<h4 class="atx" id="1-carga-de-fichero-de-referencias-de-clinvar-en-la-bbdd-generada-por-clinvar_parserpy">1) Carga de fichero de referencias de ClinVar en la BBDD generada por <em>clinvar_parser.py</em></h4>
+<p>Misma lógica programática seguida en el script <em>clinvar_parser.py</em>, creando una nueva tabla específica para la carga de las citaciones contenidas en el fichero <em>var_cditations.txt</em>, y simplificando el código.</p>
+<p>La misma estructura fue utilizada tanto para la creación de las tablas como para la función de apertura de fichero clinvar, la conexión con la base de datos de SQLite y la declaración de las diferentes tablas. Algunas de las tablas declaradas por el autor son redundantes o creadas con el propósito de una funcionalidad posterior (a la "gene).</p>
+<pre><code class="fenced-code-block language-python"><span class="token comment">### From clinvar_parser.py ###</span>
+
+<span class="token keyword">def</span> <span class="token function">open_clinvar_db</span><span class="token punctuation">(</span>db_file<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""
+        This method creates a SQLITE3 database with the needed
+        tables to store clinvar data, or opens it if it already
+        exists
+    """</span>
+
+    db <span class="token operator">=</span> sqlite3<span class="token punctuation">.</span>connect<span class="token punctuation">(</span>db_file<span class="token punctuation">)</span>
+
+    cur <span class="token operator">=</span> db<span class="token punctuation">.</span>cursor<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        <span class="token comment"># Let's enable the foreign keys integrity checks</span>
+        cur<span class="token punctuation">.</span>execute<span class="token punctuation">(</span><span class="token string">"PRAGMA FOREIGN_KEYS=ON"</span><span class="token punctuation">)</span>
+
+        <span class="token comment"># And create the tables, in case they were not previously</span>
+        <span class="token comment"># created in a previous use</span>
+        <span class="token keyword">for</span> tableDecl <span class="token keyword">in</span> CLINVAR_TABLE_DEFS<span class="token punctuation">:</span>
+            cur<span class="token punctuation">.</span>execute<span class="token punctuation">(</span>tableDecl<span class="token punctuation">)</span>
+    <span class="token keyword">except</span> sqlite3<span class="token punctuation">.</span>Error <span class="token keyword">as</span> e<span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"An error occurred: {}"</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span><span class="token builtin">str</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token builtin">file</span><span class="token operator">=</span>sys<span class="token punctuation">.</span>stderr<span class="token punctuation">)</span>
+    <span class="token keyword">finally</span><span class="token punctuation">:</span>
+        cur<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> db</code></pre>
+<p>Resto de puntos comentados in-script por el autor.</p>
+<h4 class="atx" id="2-carga-de-fichero-de-estadisticas-por-gen-de-clinvar-en-la-bbdd-generada-por-clinvar_parserpy">2) Carga de fichero de estadísticas por gen de ClinVar en la BBDD generada por <em>clinvar_parser.py</em></h4>
+<p>Creación de fichero <em>clinvar_gene_stats_parser.py</em>.
+Misma estructura que en el fichero anterior, introduciendo el siguiente bloque de código (ln 63-67) para procesar la primera línea del fichero:</p>
+<p><em>next(sf)</em></p>
+<pre><code class="fenced-code-block language-python"><span class="token comment">### From clinvar_gene_stats_parser.py ###</span>
+
+<span class="token keyword">with</span> gzip<span class="token punctuation">.</span><span class="token builtin">open</span><span class="token punctuation">(</span>stats_file<span class="token punctuation">,</span> <span class="token string">"rt"</span><span class="token punctuation">,</span> encoding<span class="token operator">=</span><span class="token string">"utf-8"</span><span class="token punctuation">)</span> <span class="token keyword">as</span> sf<span class="token punctuation">:</span>
+       headerMapping <span class="token operator">=</span> <span class="token boolean">None</span>
+       <span class="token comment"># remove first line of the file</span>
+       <span class="token builtin">next</span><span class="token punctuation">(</span>sf<span class="token punctuation">)</span>
+       cur <span class="token operator">=</span> db<span class="token punctuation">.</span>cursor<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>En este caso, el fichero utilizado fue <em>gene_specific_summary_2022-(mm).txt.gz</em>, en sus versiones congeladas de junio y de septiembre de 2022.</p>
+<h4 class="atx" id="3-elaboracion-de-bbdd-de-civic-a-partir-del-fichero-01-mmm-2022-variantsummariestsv">3) Elaboración de BBDD de CIViC a partir del fichero <em>01-(MMM)-2022-VariantSummaries.tsv</em></h4>
+<p>En este tercer caso, también se tomo como referencia el script anteriormente referido. Debido a la estructura del fichero <em>...VariantSummaries.tsv</em>, se decidió purgar gran cantidad de código no útil en el procesamiento de este fichero. Así mismo, se crearon tres tablas: una <em>(gene)</em> con información sobre el gen específico y sus respectivas entradas modelo <strong>entrez_id</strong>; en otra tabla <em>(variant)</em> se introdujo el grueso de la información contenida en la base de datos de CIViC; y una tercera en la que se incluyeron las expresiones HGVS de manera más ordenada. También se indexaron varias claves de las tablas para optimizar su acceso durante la realización de la segunda parte del ejercicio.</p>
+<pre><code class="fenced-code-block language-python"><span class="token triple-quoted-string string">"""
+CREATE INDEX IF NOT EXISTS assembly_variant ON variant(ensemble, ref_build)
+"""</span>
+<span class="token punctuation">,</span>
+<span class="token triple-quoted-string string">"""
+CREATE INDEX IF NOT EXISTS coords_variant ON variant(chr_start,chr_stop,chr_1,representative_transcript)
+"""</span>
+<span class="token punctuation">,</span>
+<span class="token triple-quoted-string string">"""
+CREATE INDEX IF NOT EXISTS coords_2_variant ON variant(chr_2_start,chr_2_stop,chr_2,representative_transcript_2)
+"""</span>
+<span class="token punctuation">,</span>
+<span class="token triple-quoted-string string">"""
+CREATE INDEX IF NOT EXISTS gene_symbol_variant ON variant(gene_symbol)
+"""</span>
+<span class="token punctuation">,</span>
+<span class="token triple-quoted-string string">"""
+CREATE TABLE IF NOT EXISTS hgvs_expressions (
+    ventry_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    variant_id INTEGER NULL,
+    hgvs_expression VARCHAR(64) NULL,
+    FOREIGN KEY (variant_id) REFERENCES gene(variant_id)
+        ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (variant_id) REFERENCES variant(variant_id)
+        ON DELETE CASCADE ON UPDATE CASCADE
+)
+"""</span></code></pre>
+<p>A diferencia de los datos de ClinVar, en CIViC, las celdas que no tienen información vienen asignadas con N/A; esto debe ser reflejado en el código para realizar correctamente el cambio a NULL a la hora de insertar los datos en la BBDD.</p>
+<pre><code class="fenced-code-block language-python"><span class="token keyword">else</span><span class="token punctuation">:</span>
+                    columnValues <span class="token operator">=</span> re<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">r"\t"</span><span class="token punctuation">,</span>wline<span class="token punctuation">)</span>
+
+                    <span class="token comment"># As these values can contain "nulls", which are</span>
+                    <span class="token comment"># designed as 'N/A', substitute them for None</span>
+                    <span class="token keyword">for</span> iCol<span class="token punctuation">,</span> vCol <span class="token keyword">in</span> <span class="token builtin">enumerate</span><span class="token punctuation">(</span>columnValues<span class="token punctuation">)</span><span class="token punctuation">:</span>
+                        <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>vCol<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span> <span class="token keyword">or</span> vCol <span class="token operator">==</span> <span class="token string">"N/A"</span><span class="token punctuation">:</span>
+                            columnValues<span class="token punctuation">[</span>iCol<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">None</span></code></pre>
+<h4 class="atx" id="35-elaboracion-de-bbdd-de-civic-a-partir-del-fichero-01-mmm-2022-clinicalevidencesummariestsv">3.5) Elaboración de BBDD de CIViC a partir del fichero <em>01-(MMM)-2022-ClinicalEvidenceSummaries.tsv</em></h4>
+<p>Para una mayor integridad de los datos, se decidió realizar un script adicional conteniendo la información de referencias y evidencia, "à la" ClinVar. De esta manera, mantuve una mayor lógica estructural en mi cabeza a la hora de entender qué estaba haciendo. El script se calcó al de CIViC original, modificando los datos requeridos. También lo hice para forzarme a escribir más código y a seguir entendiendo qué es lo que estabamos intentando hacer.</p>
+<pre><code class="fenced-code-block language-python"><span class="token triple-quoted-string string">"""
+CREATE TABLE IF NOT EXISTS evidence (
+    evidence_id INTEGER PRIMARY KEY,
+    variant_id INTEGER NOT NULL,
+    gene_symbol VARCHAR(16) NOT NULL,
+    disease VARCHAR(64) NULL,
+    doid INTEGER NULL,
+    phenotypes VARCHAR(32) NULL,
+    evidence_type VARCHAR(16) NOT NULL,
+    evidence_direction VARCHAR(32) NULL,
+    evidence_level VARCHAR(1) NOT NULL,
+    clinical_significance VARCHAR(32) NULL,
+    evidence_statement VARCHAR(512) NULL,
+    rating INTEGER NULL
+)
+"""</span>
+<span class="token punctuation">,</span>
+<span class="token triple-quoted-string string">"""
+CREATE TABLE IF NOT EXISTS drugs (
+    evidence_id INTEGER PRIMARY KEY,
+    variant_id INTEGER NOT NULL,
+    drugs VARCHAR(64) NULL,
+    drug_interaction_type VARCHAR(32) NULL,
+    FOREIGN KEY (evidence_id) REFERENCES evidence(evidence_id)
+        ON DELETE CASCADE ON UPDATE CASCADE
+)"""</span>
+<span class="token punctuation">,</span>
+<span class="token triple-quoted-string string">"""
+CREATE TABLE IF NOT EXISTS citations (
+    evidence_id INTEGER PRIMARY KEY,
+    variant_id INTEGER NOT NULL,
+    citation_id INTEGER NOT NULL,
+    source varchar(16) NOT NULL,
+    asco_id INTEGER NULL,
+    citation VARCHAR(128) NOT NULL,
+    nct_ids VARCHAR(32) NULL,
+    FOREIGN KEY (evidence_id) REFERENCES evidence(evidence_id)
+        ON DELETE CASCADE ON UPDATE CASCADE
+)"""</span></code></pre>
+<h3 class="atx" id="segunda-parte">SEGUNDA PARTE</h3>
+<h4 class="atx" id="consultas-sql">Consultas SQL</h4>
+<h5 class="atx" id="1-¿cuantas-variantes-estan-relacionadas-con-el-gen-p53-tomando-como-referencia-el-ensamblaje-grch38-en-clinvar-y-en-civic">1) ¿Cuántas variantes están relacionadas con el gen P53 tomando como referencia el ensamblaje GRCh38 en ClinVar y en CIViC?</h5>
+<h6 class="atx" id="input">INPUT</h6>
+<pre><code class="fenced-code-block language-sql"><span class="token comment">/* CLINVAR */</span>
+<span class="token keyword">SELECT</span> gene_symbol<span class="token punctuation">,</span> assembly<span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token keyword">as</span> count 
+<span class="token keyword">FROM</span> <span class="token string">"variant"</span>
+<span class="token keyword">WHERE</span> gene_symbol <span class="token operator">LIKE</span> <span class="token string">'%TP53%'</span>
+<span class="token operator">AND</span> assembly <span class="token operator">LIKE</span> <span class="token string">'%38%'</span><span class="token punctuation">;</span>
+
+<span class="token comment">/* CIViC */</span>
+<span class="token keyword">SELECT</span> <span class="token operator">*</span><span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token keyword">as</span> count 
+<span class="token keyword">FROM</span> <span class="token string">"variant"</span>
+<span class="token keyword">WHERE</span> gene_symbol <span class="token operator">LIKE</span> <span class="token string">'%TP53%'</span>
+<span class="token operator">AND</span> ref_build <span class="token operator">LIKE</span> <span class="token string">'%38%'</span><span class="token punctuation">;</span></code></pre>
+<h6 class="atx" id="output">OUTPUT</h6>
+<pre><code class="fenced-code-block language-sql"><span class="token comment">/* ##### JUNE ##### */</span>
+<span class="token comment">/* CLINVAR */</span>
+gene_symbol<span class="token punctuation">,</span>assembly<span class="token punctuation">,</span>count
+TP53<span class="token punctuation">,</span>GRCh38<span class="token punctuation">,</span><span class="token number">2547</span>
+
+<span class="token comment">/*  CIViC */</span>
+gene_symbol<span class="token punctuation">,</span>ref_build<span class="token punctuation">,</span>count
+<span class="token boolean">NULL</span><span class="token punctuation">,</span><span class="token boolean">NULL</span><span class="token punctuation">,</span><span class="token number">0</span>
+
+<span class="token comment">/* ##### DECEMBER ##### */</span>
+<span class="token comment">/* CLINVAR */</span>
+gene_symbol<span class="token punctuation">,</span>assembly<span class="token punctuation">,</span>count
+TP53<span class="token punctuation">,</span>GRCh38<span class="token punctuation">,</span><span class="token number">2761</span>
+
+<span class="token comment">/* CIViC */</span>
+gene_symbol<span class="token punctuation">,</span>ref_build<span class="token punctuation">,</span>count
+<span class="token boolean">NULL</span><span class="token punctuation">,</span><span class="token boolean">NULL</span><span class="token punctuation">,</span><span class="token number">0</span></code></pre>
+<h5 class="atx" id="2-¿que-cambio-del-tipo-single-nucleotide-variant-es-mas-frecuente-el-de-una-guanina-por-una-adenina-o-el-una-guanina-por-una-timina-usad-las-anotaciones-basadas-en-el-ensamblaje-grch37-para-cuantificar-y-proporcionar-los-numeros-totales-tanto-para-clinvar-como-para-civic">2) ¿Qué cambio del tipo “single nucleotide variant” es más frecuente, el de una Guanina por una Adenina, o el una Guanina por una Timina? Usad las anotaciones basadas en el ensamblaje GRCh37 para cuantificar y proporcionar los números totales, tanto para ClinVar como para CIViC.</h5>
+<h6 class="atx" id="input-1">INPUT</h6>
+<pre><code class="fenced-code-block language-sql"><span class="token comment">/* CLINVAR */</span>
+<span class="token keyword">SELECT</span> <span class="token keyword">type</span><span class="token punctuation">,</span>ref_allele<span class="token punctuation">,</span>alt_allele<span class="token punctuation">,</span>assembly<span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token keyword">as</span> count
+<span class="token keyword">FROM</span> variant
+<span class="token keyword">WHERE</span> assembly <span class="token operator">LIKE</span> <span class="token string">"%37%"</span>
+<span class="token operator">AND</span> <span class="token keyword">type</span> <span class="token operator">LIKE</span> <span class="token string">"%single%"</span>
+<span class="token operator">AND</span> <span class="token punctuation">(</span>ref_allele <span class="token operator">IS</span> <span class="token string">"G"</span> <span class="token operator">AND</span> alt_allele <span class="token operator">IS</span> <span class="token string">"A"</span><span class="token punctuation">)</span>
+<span class="token operator">OR</span> <span class="token punctuation">(</span>ref_allele <span class="token operator">IS</span> <span class="token string">"G"</span> <span class="token operator">AND</span> alt_allele <span class="token operator">IS</span> <span class="token string">"T"</span><span class="token punctuation">)</span>
+<span class="token keyword">GROUP</span> <span class="token keyword">BY</span> ref_allele<span class="token punctuation">,</span> alt_allele<span class="token punctuation">;</span>
+
+<span class="token comment">/* CIViC */</span>
+<span class="token keyword">SELECT</span> var_types<span class="token punctuation">,</span>ref_bases<span class="token punctuation">,</span>var_bases<span class="token punctuation">,</span>ref_build<span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token keyword">as</span> count
+<span class="token keyword">FROM</span> variant
+<span class="token keyword">WHERE</span> ref_build <span class="token operator">LIKE</span> <span class="token string">"%37%"</span>
+<span class="token operator">AND</span> <span class="token punctuation">(</span>ref_bases <span class="token operator">IS</span> <span class="token string">"G"</span> <span class="token operator">AND</span> var_bases <span class="token operator">IS</span> <span class="token string">"A"</span><span class="token punctuation">)</span>
+<span class="token operator">OR</span> <span class="token punctuation">(</span>ref_bases <span class="token operator">IS</span> <span class="token string">"G"</span> <span class="token operator">AND</span> var_bases <span class="token operator">IS</span> <span class="token string">"T"</span><span class="token punctuation">)</span>
+<span class="token keyword">GROUP</span> <span class="token keyword">BY</span> ref_bases<span class="token punctuation">,</span> var_bases<span class="token punctuation">;</span></code></pre>
+<h6 class="atx" id="output-1">OUTPUT</h6>
+<pre><code class="fenced-code-block language-sql"><span class="token comment">/* ##### JUNE ##### */</span>
+
+<span class="token comment">/* CLINVAR */</span>
+<span class="token keyword">type</span><span class="token punctuation">,</span>ref_allele<span class="token punctuation">,</span>alt_allele<span class="token punctuation">,</span>assembly<span class="token punctuation">,</span>count
+single nucleotide variant<span class="token punctuation">,</span>G<span class="token punctuation">,</span>A<span class="token punctuation">,</span>GRCh37<span class="token punctuation">,</span><span class="token number">299595</span>
+single nucleotide variant<span class="token punctuation">,</span>G<span class="token punctuation">,</span>T<span class="token punctuation">,</span>GRCh37<span class="token punctuation">,</span><span class="token number">132780</span>
+
+<span class="token comment">/* CIViC */</span>
+var_types<span class="token punctuation">,</span>ref_bases<span class="token punctuation">,</span>var_bases<span class="token punctuation">,</span>ref_build<span class="token punctuation">,</span>count
+<span class="token string">"missense_variant,transcript_fusion"</span><span class="token punctuation">,</span>G<span class="token punctuation">,</span>A<span class="token punctuation">,</span>GRCh37<span class="token punctuation">,</span><span class="token number">95</span>
+<span class="token string">"missense_variant,transcript_fusion"</span><span class="token punctuation">,</span>G<span class="token punctuation">,</span>T<span class="token punctuation">,</span>GRCh37<span class="token punctuation">,</span><span class="token number">49</span>
+
+<span class="token comment">/* ##### DECEMBER ##### */</span>
+<span class="token comment">/* CLINVAR */</span>
+<span class="token keyword">type</span><span class="token punctuation">,</span>ref_allele<span class="token punctuation">,</span>alt_allele<span class="token punctuation">,</span>assembly<span class="token punctuation">,</span>count
+single nucleotide variant<span class="token punctuation">,</span>G<span class="token punctuation">,</span>A<span class="token punctuation">,</span>GRCh37<span class="token punctuation">,</span><span class="token number">316717</span>
+single nucleotide variant<span class="token punctuation">,</span>G<span class="token punctuation">,</span>T<span class="token punctuation">,</span>GRCh37<span class="token punctuation">,</span><span class="token number">145358</span>
+
+<span class="token comment">/* CIViC */</span>
+var_types<span class="token punctuation">,</span>ref_bases<span class="token punctuation">,</span>var_bases<span class="token punctuation">,</span>ref_build<span class="token punctuation">,</span>count
+<span class="token string">"missense_variant,transcript_fusion"</span><span class="token punctuation">,</span>G<span class="token punctuation">,</span>A<span class="token punctuation">,</span>GRCh37<span class="token punctuation">,</span><span class="token number">96</span>
+<span class="token string">"missense_variant,transcript_fusion"</span><span class="token punctuation">,</span>G<span class="token punctuation">,</span>T<span class="token punctuation">,</span>GRCh37<span class="token punctuation">,</span><span class="token number">50</span></code></pre>
+<h5 class="atx" id="3-¿cuales-son-los-tres-genes-de-clinvar-con-un-mayor-numero-de-inserciones-y-deleciones-usa-el-ensamblaje-grch37-para-cuantificar-y-proporcionar-los-numeros-totales">3) ¿Cuáles son los tres genes de ClinVar con un mayor número de inserciones y deleciones? Usa el ensamblaje GRCh37 para cuantificar y proporcionar los números totales.</h5>
+<h6 class="atx" id="input-2">INPUT</h6>
+<pre><code class="fenced-code-block language-sql"><span class="token comment">/* CLINVAR */</span>
+<span class="token keyword">SELECT</span> <span class="token keyword">DISTINCT</span> gene_symbol<span class="token punctuation">,</span><span class="token keyword">type</span><span class="token punctuation">,</span>assembly<span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token keyword">as</span> count
+<span class="token keyword">FROM</span> variant
+<span class="token keyword">WHERE</span> assembly <span class="token operator">LIKE</span> <span class="token string">"%37%"</span>
+<span class="token operator">AND</span> <span class="token keyword">type</span> <span class="token operator">LIKE</span> <span class="token string">"%insertion%"</span> <span class="token operator">OR</span> <span class="token keyword">type</span> <span class="token operator">LIKE</span> <span class="token string">"%deletion%"</span>
+<span class="token keyword">GROUP</span> <span class="token keyword">BY</span> gene_symbol <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> count <span class="token keyword">DESC</span><span class="token punctuation">;</span></code></pre>
+<h6 class="atx" id="output-2">OUTPUT</h6>
+<pre><code class="fenced-code-block language-sql"><span class="token comment">/* ##### JUNE ##### */</span>
+<span class="token comment">/* CLINVAR */</span>
+gene_symbol<span class="token punctuation">,</span><span class="token keyword">type</span><span class="token punctuation">,</span>assembly<span class="token punctuation">,</span>count
+BRCA2<span class="token punctuation">,</span>Deletion<span class="token punctuation">,</span>GRCh37<span class="token punctuation">,</span><span class="token number">4698</span>
+BRCA1<span class="token punctuation">,</span>Deletion<span class="token punctuation">,</span>GRCh37<span class="token punctuation">,</span><span class="token number">4056</span>
+NF1<span class="token punctuation">,</span>Deletion<span class="token punctuation">,</span>na<span class="token punctuation">,</span><span class="token number">2802</span>
+
+<span class="token comment">/* ##### DECEMBER ##### */</span>
+<span class="token comment">/* CLINVAR */</span>
+gene_symbol<span class="token punctuation">,</span><span class="token keyword">type</span><span class="token punctuation">,</span>assembly<span class="token punctuation">,</span>count
+BRCA2<span class="token punctuation">,</span>Deletion<span class="token punctuation">,</span>GRCh37<span class="token punctuation">,</span><span class="token number">5037</span>
+BRCA1<span class="token punctuation">,</span>Deletion<span class="token punctuation">,</span>GRCh37<span class="token punctuation">,</span><span class="token number">4232</span>
+NF1<span class="token punctuation">,</span>Deletion<span class="token punctuation">,</span>GRCh37<span class="token punctuation">,</span><span class="token number">3017</span></code></pre>
+<h5 class="atx" id="4-¿cual-es-la-delecion-mas-comun-en-el-cancer-hereditario-de-mama-en-civic-¿y-en-clinvar-por-favor-incluye-en-la-respuesta-ademas-en-que-genoma-de-referencia-el-numero-de-veces-que-ocurre-el-alelo-de-referencia-y-el-observado">4) ¿Cual es la deleción más común en el cáncer hereditario de mama en CIViC? ¿Y en ClinVar? Por favor, incluye en la respuesta además en qué genoma de referencia, el número de veces que ocurre, el alelo de referencia y el observado.</h5>
+<h6 class="atx" id="input-3">INPUT</h6>
+<pre><code class="fenced-code-block language-sql"><span class="token comment">/* CLINVAR */</span>
+<span class="token keyword">SELECT</span> gene_symbol<span class="token punctuation">,</span>ref_allele<span class="token punctuation">,</span>alt_allele<span class="token punctuation">,</span>assembly<span class="token punctuation">,</span>phenotype_list<span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token keyword">as</span> ocurrence
+<span class="token keyword">FROM</span> variant
+<span class="token keyword">WHERE</span> phenotype_list <span class="token operator">LIKE</span> <span class="token string">"%breast%cancer%"</span>
+<span class="token operator">AND</span> <span class="token keyword">type</span> <span class="token operator">LIKE</span> <span class="token string">"%del%"</span>
+<span class="token keyword">GROUP</span> <span class="token keyword">BY</span> gene_symbol
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> <span class="token function">count</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token keyword">DESC</span>
+<span class="token keyword">LIMIT</span> <span class="token number">1</span><span class="token punctuation">;</span>
+
+<span class="token comment">/* CIViC */</span>
+<span class="token keyword">SELECT</span> evidence<span class="token punctuation">.</span>gene_symbol<span class="token punctuation">,</span>disease<span class="token punctuation">,</span>ref_bases<span class="token punctuation">,</span>var_bases<span class="token punctuation">,</span>ref_build<span class="token punctuation">,</span> <span class="token function">count</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> ocurrence 
+<span class="token keyword">FROM</span> evidence
+<span class="token keyword">JOIN</span> variant <span class="token keyword">ON</span> variant<span class="token punctuation">.</span>variant_id<span class="token operator">=</span>evidence<span class="token punctuation">.</span>variant_id
+<span class="token keyword">WHERE</span> disease <span class="token operator">LIKE</span> <span class="token string">"%breast%"</span> 
+<span class="token operator">AND</span> ref_bases <span class="token operator">IS</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token operator">AND</span> var_bases <span class="token operator">IS</span> <span class="token boolean">NULL</span>
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> ocurrence <span class="token keyword">DESC</span>
+<span class="token keyword">LIMIT</span> <span class="token number">1</span><span class="token punctuation">;</span></code></pre>
+<h6 class="atx" id="output-3">OUTPUT</h6>
+<pre><code class="fenced-code-block language-sql"><span class="token comment">##### JUNE #####</span>
+<span class="token comment">/* CLINVAR */</span>
+gene_symbol<span class="token punctuation">,</span>ref_allele<span class="token punctuation">,</span>alt_allele<span class="token punctuation">,</span>assembly<span class="token punctuation">,</span>phenotype_list<span class="token punctuation">,</span>ocurrance
+BRCA2<span class="token punctuation">,</span>CTTTCGG<span class="token punctuation">,</span>C<span class="token punctuation">,</span>GRCh37<span class="token punctuation">,</span><span class="token string">"Breast-ovarian cancer (...)"</span><span class="token punctuation">,</span><span class="token number">4321</span>
+
+<span class="token comment">/* CIViC */</span>
+evidence<span class="token punctuation">.</span>gene_symbol<span class="token punctuation">,</span>disease<span class="token punctuation">,</span>ref_bases<span class="token punctuation">,</span>var_bases<span class="token punctuation">,</span>ref_build<span class="token punctuation">,</span>ocurrance
+ERBB2<span class="token punctuation">,</span>Breast Cancer<span class="token punctuation">,</span>TTGAGGGAAAACACA<span class="token punctuation">,</span><span class="token boolean">NULL</span><span class="token punctuation">,</span>GRCh37<span class="token punctuation">,</span><span class="token number">2</span>
+
+<span class="token comment">/* ##### DECEMBER ##### */</span>
+<span class="token comment">/* CLINVAR */</span>
+gene_symbol<span class="token punctuation">,</span>ref_allele<span class="token punctuation">,</span>alt_allele<span class="token punctuation">,</span>assembly<span class="token punctuation">,</span>phenotype_list<span class="token punctuation">,</span>ocurrance
+BRCA2<span class="token punctuation">,</span>CTTTCGG<span class="token punctuation">,</span>C<span class="token punctuation">,</span>GRCh37<span class="token punctuation">,</span><span class="token string">"Breast-ovarian cancer (...)"</span><span class="token punctuation">,</span><span class="token number">4345</span>
+
+<span class="token comment">/* CIViC */</span>
+evidence<span class="token punctuation">.</span>gene_symbol<span class="token punctuation">,</span>disease<span class="token punctuation">,</span>ref_bases<span class="token punctuation">,</span>var_bases<span class="token punctuation">,</span>ref_build<span class="token punctuation">,</span>ocurrance
+ERBB2<span class="token punctuation">,</span>Breast Cancer<span class="token punctuation">,</span>TTGAGGGAAAACACA<span class="token punctuation">,</span><span class="token boolean">NULL</span><span class="token punctuation">,</span>GRCh37<span class="token punctuation">,</span><span class="token number">2</span></code></pre>
+<h5 class="atx" id="5-ver-el-identificador-de-gen-y-las-coordenadas-de-las-variantes-de-clinvar-del-ensamblaje-grch38-relacionadas-con-el-fenotipo-del-acute-infantile-liver-failure-due-to-synthesis-defect-of-mtdna-encoded-proteins">5) Ver el identificador de gen y las coordenadas de las variantes de ClinVar del ensamblaje GRCh38 relacionadas con el fenotipo del Acute infantile liver failure due to synthesis defect of mtDNA-encoded proteins.</h5>
+<h6 class="atx" id="input-4">INPUT</h6>
+<pre><code class="fenced-code-block language-sql"><span class="token comment">/* CLINVAR */</span>
+
+<span class="token keyword">SELECT</span> <span class="token keyword">DISTINCT</span> gene_symbol<span class="token punctuation">,</span>chro<span class="token punctuation">,</span>chro_start<span class="token punctuation">,</span>chro_stop<span class="token punctuation">,</span>assembly<span class="token punctuation">,</span>phenotype_list
+<span class="token keyword">FROM</span> variant
+<span class="token keyword">WHERE</span> phenotype_list <span class="token operator">LIKE</span> <span class="token string">"%infantile%liver%mtDNA%"</span>
+<span class="token operator">AND</span> assembly <span class="token operator">LIKE</span> <span class="token string">"%38%"</span><span class="token punctuation">;</span></code></pre>
+<h6 class="atx" id="output-too-large-to-be-shown">OUTPUT: Too large to be shown</h6>
+<h5 class="atx" id="6-para-aquellas-variantes-de-clinvar-con-significancia-clinica-pathogenic-o-likely-pathogenic-recuperar-las-coordenadas-el-alelo-de-referencia-y-el-alelo-alterado-para-la-hemoglobina-hbb-en-el-assembly-grch37">6) Para aquellas variantes de ClinVar con significancia clínica “Pathogenic” o “Likely pathogenic”, recuperar las coordenadas, el alelo de referencia y el alelo alterado para la hemoglobina (HBB) en el assembly GRCh37.</h5>
+<h6 class="atx" id="input-5">INPUT</h6>
+<pre><code class="fenced-code-block language-sql"><span class="token comment">/* CLINVAR */</span>
+<span class="token keyword">SELECT</span> <span class="token keyword">DISTINCT</span> gene_symbol<span class="token punctuation">,</span>chro<span class="token punctuation">,</span>chro_start<span class="token punctuation">,</span>chro_stop<span class="token punctuation">,</span>ref_allele<span class="token punctuation">,</span>alt_allele<span class="token punctuation">,</span>assembly<span class="token punctuation">,</span>significance
+<span class="token keyword">FROM</span> variant
+<span class="token keyword">JOIN</span> clinical_sig <span class="token keyword">ON</span> clinical_sig<span class="token punctuation">.</span>ventry_id<span class="token operator">=</span>variant<span class="token punctuation">.</span>ventry_id
+<span class="token keyword">WHERE</span> gene_symbol <span class="token operator">LIKE</span> <span class="token string">"%HBB%"</span>
+<span class="token operator">AND</span> assembly <span class="token operator">LIKE</span> <span class="token string">"%37%"</span>
+<span class="token operator">AND</span> <span class="token punctuation">(</span>significance <span class="token operator">IS</span> <span class="token string">"Pathogenic"</span> <span class="token operator">OR</span> significance <span class="token operator">IS</span> <span class="token string">"Likely pathogenic"</span><span class="token punctuation">)</span>
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> significance<span class="token punctuation">;</span></code></pre>
+<h6 class="atx" id="output-too-large-to-be-shown-1">OUTPUT: Too large to be shown</h6>
+<h5 class="atx" id="7-calcular-el-numero-de-variantes-del-ensamblaje-grch38-que-se-encuentren-en-el-cromosoma-13-entre-las-coordenadas-10000000-y-20000000--tanto-para-clinvar-como-para-civic">7) Calcular el número de variantes del ensamblaje GRCh38 que se encuentren en el cromosoma 13, entre las coordenadas 10,000,000 y 20,000,000 , tanto para ClinVar como para CIViC.</h5>
+<h6 class="atx" id="input-6">INPUT</h6>
+<pre><code class="fenced-code-block language-sql"><span class="token comment">/* CLINVAR */</span>
+<span class="token keyword">SELECT</span> chro<span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> ocurrance
+<span class="token keyword">FROM</span> variant
+<span class="token keyword">WHERE</span> assembly <span class="token operator">LIKE</span> <span class="token string">"%38%"</span>
+<span class="token operator">AND</span> chro <span class="token operator">IS</span> <span class="token string">"13"</span>
+<span class="token operator">AND</span> <span class="token punctuation">(</span>chro_start <span class="token operator">&gt;</span> <span class="token number">10000000</span> <span class="token operator">AND</span> chro_stop <span class="token operator">&lt;</span> <span class="token number">20000000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">/* CIViC */</span>
+<span class="token keyword">SELECT</span> chr_1<span class="token punctuation">,</span>chr_2<span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> ocurrance
+<span class="token keyword">FROM</span> variant
+<span class="token keyword">WHERE</span> ref_build <span class="token operator">LIKE</span> <span class="token string">"%38%"</span>
+<span class="token operator">AND</span> <span class="token punctuation">(</span>chr_1 <span class="token operator">IS</span> <span class="token number">13</span> <span class="token operator">AND</span> chr_start <span class="token operator">&gt;</span> <span class="token number">10000000</span> <span class="token operator">AND</span> chr_stop <span class="token operator">&lt;</span> <span class="token number">20000000</span><span class="token punctuation">)</span>
+<span class="token operator">OR</span> <span class="token punctuation">(</span>chr_2 <span class="token operator">IS</span> <span class="token number">13</span> <span class="token operator">AND</span> chr_2_start <span class="token operator">&gt;</span> <span class="token number">10000000</span> <span class="token operator">AND</span> chr_2_stop <span class="token operator">&lt;</span> <span class="token number">20000000</span><span class="token punctuation">)</span><span class="token punctuation">;</span> </code></pre>
+<h6 class="atx" id="output-4">OUTPUT</h6>
+<pre><code class="fenced-code-block language-sql"><span class="token comment">/* ##### JUNE ##### */</span>
+<span class="token comment">/* CLINVAR */</span>
+chro<span class="token punctuation">,</span>ocurrance
+<span class="token number">13</span><span class="token punctuation">,</span><span class="token number">18</span>
+
+<span class="token comment">/* CIViC */</span>
+chr_1<span class="token punctuation">,</span>chr_2<span class="token punctuation">,</span>ocurrance
+<span class="token boolean">NULL</span><span class="token punctuation">,</span><span class="token boolean">NULL</span><span class="token punctuation">,</span><span class="token number">0</span>
+
+<span class="token comment">/* ##### DECEMBER ##### */</span>
+<span class="token comment">/* CLINVAR */</span>
+chro<span class="token punctuation">,</span>ocurrance
+<span class="token number">13</span><span class="token punctuation">,</span><span class="token number">20</span>
+
+<span class="token comment">/* CIViC */</span>
+chr_1<span class="token punctuation">,</span>chr_2<span class="token punctuation">,</span>ocurrance
+<span class="token boolean">NULL</span><span class="token punctuation">,</span><span class="token boolean">NULL</span><span class="token punctuation">,</span><span class="token number">0</span></code></pre>
+<h5 class="atx" id="8-calcular-el-numero-de-variantes-de-clinvar-para-los-cuales-se-haya-provisto-entradas-de-significancia-clinica-que-no-sean-inciertas-uncertain-significance-del-ensamblaje-grch37-en-aquellas-variantes-relacionadas-con-brca2">8) Calcular el número de variantes de ClinVar para los cuáles se haya provisto entradas de significancia clínica que no sean inciertas (“Uncertain significance”), del ensamblaje GRCh37, en aquellas variantes relacionadas con BRCA2.</h5>
+<h6 class="atx" id="input-7">INPUT</h6>
+<pre><code class="fenced-code-block language-sql"><span class="token comment">/* CLINVAR */</span>
+<span class="token keyword">SELECT</span> <span class="token keyword">DISTINCT</span> assembly<span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token keyword">as</span> ocurrance
+<span class="token keyword">FROM</span> variant
+<span class="token keyword">LEFT</span> <span class="token keyword">JOIN</span> clinical_sig <span class="token keyword">ON</span> clinical_sig<span class="token punctuation">.</span>ventry_id<span class="token operator">=</span>variant<span class="token punctuation">.</span>ventry_id
+<span class="token keyword">WHERE</span> gene_symbol <span class="token operator">LIKE</span> <span class="token string">"%BRCA2%"</span>
+<span class="token operator">AND</span> assembly <span class="token operator">LIKE</span> <span class="token string">"%37%"</span>
+<span class="token operator">AND</span> significance <span class="token operator">NOT</span> <span class="token operator">LIKE</span> <span class="token string">"%uncertain%"</span></code></pre>
+<h6 class="atx" id="output-5">OUTPUT</h6>
+<pre><code class="fenced-code-block language-sql"><span class="token comment">/* ##### JUNE ##### */</span>
+<span class="token comment">/* CLINVAR */</span>
+assembly<span class="token punctuation">,</span>ocurrance
+GRCh37<span class="token punctuation">,</span><span class="token number">8994</span>
+
+<span class="token comment">/* ##### DECEMBER ##### */</span>
+<span class="token comment">/* CLINVAR */</span>
+assembly<span class="token punctuation">,</span>ocurrance
+GRCh37<span class="token punctuation">,</span><span class="token number">9837</span></code></pre>
+<h5 class="atx" id="9-obtener-el-listado-de-pubmed_ids-de-clinvar-relacionados-con-las-variantes-del-ensamblaje-grch38-relacionadas-con-el-fenotipo-del-glioblastoma">9) Obtener el listado de pubmed_ids de ClinVar relacionados con las variantes del ensamblaje GRCh38 relacionadas con el fenotipo del glioblastoma.</h5>
+<h6 class="atx" id="input-8">INPUT</h6>
+<pre><code class="fenced-code-block language-sql"><span class="token comment">/* CLINVAR */</span>
+<span class="token keyword">SELECT</span> <span class="token keyword">DISTINCT</span> variation_id<span class="token punctuation">,</span>citation_source<span class="token punctuation">,</span>citation_id<span class="token punctuation">,</span>assembly<span class="token punctuation">,</span>phenotype_list
+<span class="token keyword">FROM</span> variant
+<span class="token keyword">LEFT</span> <span class="token keyword">JOIN</span> reference <span class="token keyword">ON</span> reference<span class="token punctuation">.</span>ventry_id <span class="token operator">=</span> variant<span class="token punctuation">.</span>ventry_id
+<span class="token keyword">WHERE</span> assembly <span class="token operator">LIKE</span> <span class="token string">"%38%"</span>
+<span class="token operator">AND</span> phenotype_list <span class="token operator">LIKE</span> <span class="token string">"%glioblastoma%"</span></code></pre>
+<h6 class="atx" id="output-too-large-to-be-shown-2">OUTPUT: Too large to be shown</h6>
+<h5 class="atx" id="10-obtener-el-numero-de-variantes-del-cromosoma-1-y-calcular-la-frecuencia-de-mutaciones-de-este-cromosoma-tanto-para-grch37-como-para-grch38-¿es-esta-frecuencia-mayor-que-la-del-cromosoma-22-¿y-si-lo-comparamos-con-el-cromosoma-x-tomad-para-los-calculos-los-tamanos-cromosomicos-disponibles-tanto-en-httpswwwncbinlmnihgovgrchumandataasmgrch37p13-como-en-httpswwwncbinlmnihgovgrchumandataasmgrch38p13">10) Obtener el número de variantes del cromosoma 1 y calcular la frecuencia de mutaciones de este cromosoma, tanto para GRCh37 como para GRCh38. ¿Es esta frecuencia mayor que la del cromosoma 22? ¿Y si lo comparamos con el cromosoma X? Tomad para los cálculos los tamaños cromosómicos disponibles tanto en <a href="https://www.ncbi.nlm.nih.gov/grc/human/data?asm=GRCh37.p13">https://www.ncbi.nlm.nih.gov/grc/human/data?asm=GRCh37.p13</a> como en <a href="https://www.ncbi.nlm.nih.gov/grc/human/data?asm=GRCh38.p13">https://www.ncbi.nlm.nih.gov/grc/human/data?asm=GRCh38.p13</a>.</h5>
+<h6 class="atx" id="input-9">INPUT</h6>
+<pre><code class="fenced-code-block language-sql"><span class="token comment">/* CLINVAR */</span>
+<span class="token keyword">SELECT</span> chro<span class="token punctuation">,</span>assembly<span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token keyword">as</span> ocurrance<span class="token punctuation">,</span>
+<span class="token keyword">CASE</span> 
+    <span class="token keyword">WHEN</span> assembly <span class="token operator">LIKE</span> <span class="token string">'%37%'</span> <span class="token operator">AND</span> chro <span class="token operator">=</span> <span class="token number">1</span> <span class="token keyword">THEN</span> <span class="token number">249250621.0</span>
+    <span class="token keyword">WHEN</span> assembly <span class="token operator">LIKE</span> <span class="token string">'%37%'</span> <span class="token operator">AND</span> chro <span class="token operator">=</span> <span class="token number">22</span> <span class="token keyword">THEN</span> <span class="token number">51304566.0</span>
+    <span class="token keyword">WHEN</span> assembly <span class="token operator">LIKE</span> <span class="token string">'%37%'</span> <span class="token operator">AND</span> chro <span class="token operator">=</span> <span class="token string">'X'</span> <span class="token keyword">THEN</span> <span class="token number">155270560.0</span>
+    <span class="token keyword">WHEN</span> assembly <span class="token operator">LIKE</span> <span class="token string">'%38%'</span> <span class="token operator">AND</span> chro <span class="token operator">=</span> <span class="token number">1</span> <span class="token keyword">THEN</span> <span class="token number">248956422.0</span>
+    <span class="token keyword">WHEN</span> assembly <span class="token operator">LIKE</span> <span class="token string">'%38%'</span> <span class="token operator">AND</span> chro <span class="token operator">=</span> <span class="token number">22</span> <span class="token keyword">THEN</span> <span class="token number">50818468.0</span>
+    <span class="token keyword">WHEN</span> assembly <span class="token operator">LIKE</span> <span class="token string">'%38%'</span> <span class="token operator">AND</span> chro <span class="token operator">=</span> <span class="token string">'X'</span> <span class="token keyword">THEN</span> <span class="token number">156040895.0</span>
+<span class="token keyword">END</span> <span class="token keyword">AS</span> chr_length<span class="token punctuation">,</span>
+<span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token keyword">CASE</span> 
+    <span class="token keyword">WHEN</span> assembly <span class="token operator">LIKE</span> <span class="token string">'%37%'</span> <span class="token operator">AND</span> chro <span class="token operator">=</span> <span class="token number">1</span> <span class="token keyword">THEN</span> <span class="token number">249250621.0</span>
+    <span class="token keyword">WHEN</span> assembly <span class="token operator">LIKE</span> <span class="token string">'%37%'</span> <span class="token operator">AND</span> chro <span class="token operator">=</span> <span class="token number">22</span> <span class="token keyword">THEN</span> <span class="token number">51304566.0</span>
+    <span class="token keyword">WHEN</span> assembly <span class="token operator">LIKE</span> <span class="token string">'%37%'</span> <span class="token operator">AND</span> chro <span class="token operator">=</span> <span class="token string">'X'</span> <span class="token keyword">THEN</span> <span class="token number">155270560.0</span>
+    <span class="token keyword">WHEN</span> assembly <span class="token operator">LIKE</span> <span class="token string">'%38%'</span> <span class="token operator">AND</span> chro <span class="token operator">=</span> <span class="token number">1</span> <span class="token keyword">THEN</span> <span class="token number">248956422.0</span>
+    <span class="token keyword">WHEN</span> assembly <span class="token operator">LIKE</span> <span class="token string">'%38%'</span> <span class="token operator">AND</span> chro <span class="token operator">=</span> <span class="token number">22</span> <span class="token keyword">THEN</span> <span class="token number">50818468.0</span>
+    <span class="token keyword">WHEN</span> assembly <span class="token operator">LIKE</span> <span class="token string">'%38%'</span> <span class="token operator">AND</span> chro <span class="token operator">=</span> <span class="token string">'X'</span> <span class="token keyword">THEN</span> <span class="token number">156040895.0</span>
+<span class="token keyword">END</span> <span class="token operator">*</span> <span class="token number">100</span> <span class="token keyword">AS</span> mut_frequency
+<span class="token keyword">FROM</span> variant
+<span class="token keyword">WHERE</span> <span class="token punctuation">(</span>assembly <span class="token operator">LIKE</span> <span class="token string">"%37%"</span> <span class="token operator">OR</span> assembly <span class="token operator">LIKE</span> <span class="token string">"%38%"</span><span class="token punctuation">)</span>
+<span class="token operator">AND</span> <span class="token punctuation">(</span>chro <span class="token operator">IS</span> <span class="token number">22</span> <span class="token operator">OR</span> chro <span class="token operator">IS</span> <span class="token number">1</span> <span class="token operator">OR</span> chro <span class="token operator">IS</span> <span class="token string">"X"</span><span class="token punctuation">)</span>
+<span class="token keyword">GROUP</span> <span class="token keyword">BY</span> chro<span class="token punctuation">,</span>assembly <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> mut_frequency <span class="token keyword">DESC</span><span class="token punctuation">;</span>
+
+<span class="token comment">/* CIViC */</span>
+<span class="token keyword">SELECT</span> chr_1<span class="token punctuation">,</span>ref_build<span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token keyword">as</span> ocurrance<span class="token punctuation">,</span>
+<span class="token keyword">CASE</span> 
+    <span class="token keyword">WHEN</span> ref_build <span class="token operator">LIKE</span> <span class="token string">'%37%'</span> <span class="token operator">AND</span> chr_1 <span class="token operator">=</span> <span class="token number">1</span> <span class="token keyword">THEN</span> <span class="token number">249250621.0</span>
+    <span class="token keyword">WHEN</span> ref_build <span class="token operator">LIKE</span> <span class="token string">'%37%'</span> <span class="token operator">AND</span> chr_1 <span class="token operator">=</span> <span class="token number">22</span> <span class="token keyword">THEN</span> <span class="token number">51304566.0</span>
+    <span class="token keyword">WHEN</span> ref_build <span class="token operator">LIKE</span> <span class="token string">'%37%'</span> <span class="token operator">AND</span> chr_1 <span class="token operator">=</span> <span class="token string">'X'</span> <span class="token keyword">THEN</span> <span class="token number">155270560.0</span>
+    <span class="token keyword">WHEN</span> ref_build <span class="token operator">LIKE</span> <span class="token string">'%38%'</span> <span class="token operator">AND</span> chr_1 <span class="token operator">=</span> <span class="token number">1</span> <span class="token keyword">THEN</span> <span class="token number">248956422.0</span>
+    <span class="token keyword">WHEN</span> ref_build <span class="token operator">LIKE</span> <span class="token string">'%38%'</span> <span class="token operator">AND</span> chr_1 <span class="token operator">=</span> <span class="token number">22</span> <span class="token keyword">THEN</span> <span class="token number">50818468.0</span>
+    <span class="token keyword">WHEN</span> ref_build <span class="token operator">LIKE</span> <span class="token string">'%38%'</span> <span class="token operator">AND</span> chr_1 <span class="token operator">=</span> <span class="token string">'X'</span> <span class="token keyword">THEN</span> <span class="token number">156040895.0</span>
+<span class="token keyword">END</span> <span class="token keyword">AS</span> chr_length<span class="token punctuation">,</span>
+<span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token keyword">CASE</span> 
+    <span class="token keyword">WHEN</span> ref_build <span class="token operator">LIKE</span> <span class="token string">'%37%'</span> <span class="token operator">AND</span> chr_1 <span class="token operator">=</span> <span class="token number">1</span> <span class="token keyword">THEN</span> <span class="token number">249250621.0</span>
+    <span class="token keyword">WHEN</span> ref_build <span class="token operator">LIKE</span> <span class="token string">'%37%'</span> <span class="token operator">AND</span> chr_1 <span class="token operator">=</span> <span class="token number">22</span> <span class="token keyword">THEN</span> <span class="token number">51304566.0</span>
+    <span class="token keyword">WHEN</span> ref_build <span class="token operator">LIKE</span> <span class="token string">'%37%'</span> <span class="token operator">AND</span> chr_1 <span class="token operator">=</span> <span class="token string">'X'</span> <span class="token keyword">THEN</span> <span class="token number">155270560.0</span>
+    <span class="token keyword">WHEN</span> ref_build <span class="token operator">LIKE</span> <span class="token string">'%38%'</span> <span class="token operator">AND</span> chr_1 <span class="token operator">=</span> <span class="token number">1</span> <span class="token keyword">THEN</span> <span class="token number">248956422.0</span>
+    <span class="token keyword">WHEN</span> ref_build <span class="token operator">LIKE</span> <span class="token string">'%38%'</span> <span class="token operator">AND</span> chr_1 <span class="token operator">=</span> <span class="token number">22</span> <span class="token keyword">THEN</span> <span class="token number">50818468.0</span>
+    <span class="token keyword">WHEN</span> ref_build <span class="token operator">LIKE</span> <span class="token string">'%38%'</span> <span class="token operator">AND</span> chr_1 <span class="token operator">=</span> <span class="token string">'X'</span> <span class="token keyword">THEN</span> <span class="token number">156040895.0</span>
+<span class="token keyword">END</span> <span class="token operator">*</span> <span class="token number">100</span> <span class="token keyword">AS</span> mut_frequency
+<span class="token keyword">FROM</span> variant
+<span class="token keyword">WHERE</span> <span class="token punctuation">(</span>ref_build <span class="token operator">LIKE</span> <span class="token string">"%37%"</span> <span class="token operator">OR</span> ref_build <span class="token operator">LIKE</span> <span class="token string">"%38%"</span><span class="token punctuation">)</span>
+<span class="token operator">AND</span> <span class="token punctuation">(</span>chr_1 <span class="token operator">IS</span> <span class="token number">22</span> <span class="token operator">OR</span> chr_1 <span class="token operator">IS</span> <span class="token number">1</span> <span class="token operator">OR</span> chr_1 <span class="token operator">IS</span> <span class="token string">"X"</span><span class="token punctuation">)</span>
+<span class="token keyword">GROUP</span> <span class="token keyword">BY</span> chr_1<span class="token punctuation">,</span>ref_build <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> mut_frequency <span class="token keyword">DESC</span><span class="token punctuation">;</span></code></pre>
+<h6 class="atx" id="output-6">OUTPUT</h6>
+<pre><code class="fenced-code-block language-sql"><span class="token comment">/* ##### JUNE ##### */</span>
+<span class="token comment">/* CLINVAR */</span>
+chro<span class="token punctuation">,</span>assembly<span class="token punctuation">,</span>ocurrance<span class="token punctuation">,</span>chr_length<span class="token punctuation">,</span>mut_frequency
+<span class="token number">22</span><span class="token punctuation">,</span>GRCh37<span class="token punctuation">,</span><span class="token number">32726</span><span class="token punctuation">,</span><span class="token number">51304566</span><span class="token punctuation">,</span><span class="token number">0.06378769484181973</span>
+<span class="token number">22</span><span class="token punctuation">,</span>GRCh38<span class="token punctuation">,</span><span class="token number">31280</span><span class="token punctuation">,</span><span class="token number">50818468</span><span class="token punctuation">,</span><span class="token number">0.06155242617703469</span>
+<span class="token number">1</span><span class="token punctuation">,</span>GRCh37<span class="token punctuation">,</span><span class="token number">126477</span><span class="token punctuation">,</span><span class="token number">249250621</span><span class="token punctuation">,</span><span class="token number">0.05074290266261764</span>
+<span class="token number">1</span><span class="token punctuation">,</span>GRCh38<span class="token punctuation">,</span><span class="token number">122700</span><span class="token punctuation">,</span><span class="token number">248956422</span><span class="token punctuation">,</span><span class="token number">0.04928573403099439</span>
+X<span class="token punctuation">,</span>GRCh37<span class="token punctuation">,</span><span class="token number">64346</span><span class="token punctuation">,</span><span class="token number">155270560</span><span class="token punctuation">,</span><span class="token number">0.04144121074851537</span>
+X<span class="token punctuation">,</span>GRCh38<span class="token punctuation">,</span><span class="token number">60455</span><span class="token punctuation">,</span><span class="token number">156040895</span><span class="token punctuation">,</span><span class="token number">0.03874304873731979</span>
+
+<span class="token comment">/* CIViC */</span>
+chr_1<span class="token punctuation">,</span>ref_build<span class="token punctuation">,</span>ocurrance<span class="token punctuation">,</span>chr_length<span class="token punctuation">,</span>mut_frequency
+<span class="token number">22</span><span class="token punctuation">,</span>GRCh37<span class="token punctuation">,</span><span class="token number">19</span><span class="token punctuation">,</span><span class="token number">51304566</span><span class="token punctuation">,</span><span class="token number">0.000037033740817532694</span>
+<span class="token number">1</span><span class="token punctuation">,</span>GRCh37<span class="token punctuation">,</span><span class="token number">63</span><span class="token punctuation">,</span><span class="token number">249250621</span><span class="token punctuation">,</span><span class="token number">0.000025275764508526538</span>
+X<span class="token punctuation">,</span>GRCh37<span class="token punctuation">,</span><span class="token number">22</span><span class="token punctuation">,</span><span class="token number">155270560</span><span class="token punctuation">,</span><span class="token number">0.000014168816033123084</span>
+<span class="token number">1</span><span class="token punctuation">,</span>GRCh38<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">248956422</span><span class="token punctuation">,</span><span class="token number">4.0167672396898447</span>e<span class="token operator">-</span><span class="token number">7</span>
+
+<span class="token comment">/* ##### DECEMBER ##### */</span>
+<span class="token comment">/* CLINVAR */</span>
+chro<span class="token punctuation">,</span>assembly<span class="token punctuation">,</span>ocurrance<span class="token punctuation">,</span>chr_length<span class="token punctuation">,</span>mut_frequency
+<span class="token number">22</span><span class="token punctuation">,</span>GRCh37<span class="token punctuation">,</span><span class="token number">35343</span><span class="token punctuation">,</span><span class="token number">51304566</span><span class="token punctuation">,</span><span class="token number">0.06888860535337146</span>
+<span class="token number">22</span><span class="token punctuation">,</span>GRCh38<span class="token punctuation">,</span><span class="token number">33866</span><span class="token punctuation">,</span><span class="token number">50818468</span><span class="token punctuation">,</span><span class="token number">0.06664112739486755</span>
+<span class="token number">1</span><span class="token punctuation">,</span>GRCh37<span class="token punctuation">,</span><span class="token number">136176</span><span class="token punctuation">,</span><span class="token number">249250621</span><span class="token punctuation">,</span><span class="token number">0.05463416678909699</span>
+<span class="token number">1</span><span class="token punctuation">,</span>GRCh38<span class="token punctuation">,</span><span class="token number">132361</span><span class="token punctuation">,</span><span class="token number">248956422</span><span class="token punctuation">,</span><span class="token number">0.05316633286125875</span>
+X<span class="token punctuation">,</span>GRCh37<span class="token punctuation">,</span><span class="token number">67744</span><span class="token punctuation">,</span><span class="token number">155270560</span><span class="token punctuation">,</span><span class="token number">0.04362964878854047</span>
+X<span class="token punctuation">,</span>GRCh38<span class="token punctuation">,</span><span class="token number">63782</span><span class="token punctuation">,</span><span class="token number">156040895</span><span class="token punctuation">,</span><span class="token number">0.04087518211171501</span>
+
+<span class="token comment">/* CIViC */</span>
+chr_1<span class="token punctuation">,</span>ref_build<span class="token punctuation">,</span>ocurrance<span class="token punctuation">,</span>chr_length<span class="token punctuation">,</span>mut_frequency
+<span class="token number">22</span><span class="token punctuation">,</span>GRCh37<span class="token punctuation">,</span><span class="token number">18</span><span class="token punctuation">,</span><span class="token number">51304566</span><span class="token punctuation">,</span><span class="token number">0.000035084596563978336</span>
+<span class="token number">1</span><span class="token punctuation">,</span>GRCh37<span class="token punctuation">,</span><span class="token number">63</span><span class="token punctuation">,</span><span class="token number">249250621</span><span class="token punctuation">,</span><span class="token number">0.000025275764508526538</span>
+X<span class="token punctuation">,</span>GRCh37<span class="token punctuation">,</span><span class="token number">22</span><span class="token punctuation">,</span><span class="token number">155270560</span><span class="token punctuation">,</span><span class="token number">0.000014168816033123084</span>
+<span class="token number">1</span><span class="token punctuation">,</span>GRCh38<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">248956422</span><span class="token punctuation">,</span><span class="token number">4.0167672396898447</span>e<span class="token operator">-</span><span class="token number">7</span></code></pre>
+</article>
+</body>
+</html>
