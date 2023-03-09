@@ -12,11 +12,16 @@
 #!/usr/bin/env python3.8
 # -*- coding: utf-8 -*-
 
+# Module import, left out os as it isn't used
+
 import sys
-import os
 import sqlite3
 import gzip
 import re
+
+# SQL tables declaration
+# Different tables where used for different strata of information
+# Integrity mantainance
 
 CLINVAR_STATS_DEFS = [
 """
@@ -44,6 +49,7 @@ CREATE INDEX mim_number ON gene_stats(mim_no)
 """
 ]
 
+# Clinvar file open function
 def open_clinvar_db(db_file):
 	db = sqlite3.connect(db_file)
 

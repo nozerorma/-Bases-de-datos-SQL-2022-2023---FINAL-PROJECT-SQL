@@ -11,10 +11,16 @@
 #!/usr/bin/env python3.8
 # -*- coding: utf-8 -*-
 
-import sys, os
+# Module import, left out os as it isn't used
+
+import sys
 import sqlite3
 import gzip
 import re
+
+# SQL tables declaration
+# Different tables where used for different strata of information
+# Integrity mantainance
 
 CLINVAR_TABLE_DEFS = [
 """
@@ -102,35 +108,44 @@ CREATE TABLE IF NOT EXISTS variant_phenotypes (
 """
 ]
 
+# Clinvar file open function
 def open_clinvar_db(db_file):
 	"""
 		This method creates a SQLITE3 database with the needed
 		tables to store clinvar data, or opens it if it already
 		exists
 	"""
-	
+	# SQLite3 connection
 	db = sqlite3.connect(db_file)
 	
 	cur = db.cursor()
 	try:
-		# Let's enable the foreign keys integrity checks
+		# Foreign keys integrity checks
 		cur.execute("PRAGMA FOREIGN_KEYS=ON")
 		
-		# And create the tables, in case they were not previously
-		# created in a previous use
+		# Table declaration
 		for tableDecl in CLINVAR_TABLE_DEFS:
 			cur.execute(tableDecl)
+	
+	# Exception prompt if no table is to be declared
 	except sqlite3.Error as e:
 		print("An error occurred: {}".format(str(e)), file=sys.stderr)
+	
+	# Close cursor
 	finally:
 		cur.close()
 	
 	return db
-	
+
+# Main data input function	
 def store_clinvar_file(db,clinvar_file):
+	
+	# Open file in gzip format, stablish encoding
 	with gzip.open(clinvar_file,"rt",encoding="utf-8") as cf:
+		
+		# Set header as none, in order to map it afterwards
 		headerMapping = None
-		known_genes = set()
+		
 		# This variable teaches the code that the file being
 		# parsed has new VCF coordinate, reference and alternate
 		# allele columns
